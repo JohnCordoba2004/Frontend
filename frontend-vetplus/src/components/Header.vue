@@ -1,13 +1,12 @@
 <template>
-  <header class="relative z-50 bg-white border-b-2 border-gray-300 shadow-lg min-h-[70px] tracking-widest">
-    <div class="w-full px-4 py-6">
-      <div class="mx-auto flex flex-nowrap items-center justify-between gap-6 w-full max-w-screen-xl">
+  <header
+    class="relative z-50 bg-white border-b-2 border-gray-300 shadow-lg min-h-[60px] sm:min-h-[70px] tracking-widest">
+    <div class="w-full px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-6">
+      <div class="mx-auto flex flex-nowrap items-center justify-between gap-4 sm:gap-6 w-full max-w-screen-xl">
         <!-- Logo -->
-        <a href="/" class="hidden sm:flex items-center">
-          <img src="../assets/LogoVetPlus.webp" alt="VetPlus" class="w-[224px]" />
-        </a>
-        <a href="/" class="sm:hidden">
-          <img src="../assets/LogoVetPlus.webp" alt="VetPlus" class="w-[224px]" />
+        <a href="/" class="flex items-center">
+          <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1759439965/LogoVetPlus_mfsa9b.webp" alt="VetPlus"
+            class="w-32 sm:w-40 md:w-48 lg:w-56 xl:w-[224px] h-auto" />
         </a>
 
         <!-- Menú lateral / Navbar -->
@@ -30,22 +29,26 @@
           </button>
 
           <!-- Lista de enlaces -->
-          <ul class="z-50 lg:flex lg:gap-x-10
-                   max-lg:fixed max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-1/2 max-lg:min-w-[300px]
-                   max-lg:bg-white max-lg:p-6 max-lg:shadow-md max-lg:overflow-auto max-lg:space-y-3">
+          <ul
+            class="z-50 lg:flex lg:gap-x-8 xl:gap-x-10
+                   max-lg:fixed max-lg:left-0 max-lg:top-0 max-lg:h-full max-lg:w-3/4 max-lg:min-w-[280px] max-lg:max-w-[350px]
+                   max-lg:bg-white max-lg:p-4 sm:max-lg:p-6 max-lg:shadow-md max-lg:overflow-auto max-lg:space-y-2 sm:max-lg:space-y-3">
             <!-- Logo dentro del menú móvil -->
-            <li class="mb-6 hidden max-lg:block">
+            <li class="mb-4 sm:mb-6 hidden max-lg:block">
               <a href="/">
-                <img src="../assets/LogoVetPlus.webp" alt="VetPlus" class="w-36" />
+                <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1759439965/LogoVetPlus_mfsa9b.webp"
+                  alt="VetPlus" class="w-28 sm:w-32 lg:w-36 h-auto" />
               </a>
             </li>
 
             <!-- Links principales -->
-            <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3">
-              <a href="/" class="block text-[15px] font-semibold text-blue-600 hover:text-blue-700">Inicio</a>
+            <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-2 sm:max-lg:py-3">
+              <a href="/"
+                class="block text-sm sm:text-[15px] font-semibold text-blue-600 hover:text-blue-700">Inicio</a>
             </li>
-            <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3">
-              <a href="/" class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">Vetplus</a>
+            <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-2 sm:max-lg:py-3">
+              <a href="/VetPlus"
+                class="block text-sm sm:text-[15px] font-semibold text-gray-600 hover:text-blue-700">Vetplus</a>
             </li>
 
             <!-- Dropdown: Planes -->
@@ -67,10 +70,12 @@
                        group-hover:max-h-[700px] group-hover:opacity-100 group-hover:pb-4 group-hover:pt-6
                        transition-all duration-500">
                 <li class="border-b border-gray-300 py-2">
-                  <a href="/" class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Perros</a>
+                  <a href="/PlanesPerro"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Perros</a>
                 </li>
                 <li class="border-b border-gray-300 py-2">
-                  <a href="/" class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Gatos</a>
+                  <a href="/PlanesGato"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Gatos</a>
                 </li>
               </ul>
             </li>
@@ -93,25 +98,28 @@
                        group-hover:max-h-[700px] group-hover:opacity-100 group-hover:pb-4 group-hover:pt-6
                        transition-all duration-500">
                 <li class="border-b border-gray-300 py-2">
-                  <a href="/" class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Clínicas
+                  <a href="/ClinicasVeterinarias"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Clínicas
                     Veterinarias</a>
                 </li>
                 <li class="border-b border-gray-300 py-2">
-                  <a href="/" class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Profesionales
+                  <a href="/ProfesionalesVet"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Profesionales
                     adscritos</a>
                 </li>
                 <li class="border-b border-gray-300 py-2">
-                  <a href="/" class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Otros</a>
+                  <a href="/Otros" class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Otros</a>
                 </li>
               </ul>
             </li>
 
             <!-- Otros enlaces -->
             <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3">
-              <a href="/" class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">Beneficios</a>
+              <a href="/Beneficios"
+                class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">Beneficios</a>
             </li>
             <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3">
-              <a href="/" class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">Afíliate</a>
+              <a href="/Afiliate" class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">Afíliate</a>
             </li>
 
             <!-- Teléfono dentro del menú móvil -->
@@ -150,7 +158,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const isOpen = ref(false)
 

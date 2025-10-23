@@ -1,6 +1,4 @@
 <template>
-    <section>
-        <h1>Afiliate</h1>
-    </section>
+  <h1>Afiliate</h1>
 </template>
-<script setup></script>
+<script></script>

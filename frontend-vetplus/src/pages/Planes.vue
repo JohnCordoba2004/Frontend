@@ -1,6 +1,3 @@
 <template>
-    <section>
-        <h1>Planes</h1>
-    </section>
+  <h1>Planes</h1>
 </template>
-<script setup></script>
