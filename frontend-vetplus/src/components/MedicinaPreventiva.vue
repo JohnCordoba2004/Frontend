@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-200 py-8 sm:py-12 lg:py-16">
+  <section :class="['bg-gray-200 py-8 sm:py-12 lg:py-16', containerClass || '']">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- 🔹 TÍTULO -->
@@ -58,7 +58,7 @@
                 <td class="p-3 text-green-600 text-xl lg:text-2xl">✔️</td>
                 <td class="p-3 text-green-600 text-xl lg:text-2xl">✔️</td>
                 <td class="p-3 text-green-600 text-xl lg:text-2xl">✔️</td>
-                <td class="p-3 text-green-600 text-xl lg:text-2xl">✔️</td>
+                <td class="p-3 text-green-600 text-xl lg:text-2xl"></td>
                 <td class="p-3 text-gray-400 text-lg lg:text-xl">--</td>
                 <td class="p-3 text-gray-400 text-lg lg:text-xl">--</td>
                 <td class="p-3 text-gray-400 text-lg lg:text-xl">--</td>
@@ -142,3 +142,12 @@
     </div>
   </section>
 </template>
+
+<script setup>
+defineProps({
+  containerClass: {
+    type: String,
+    default: ''
+  }
+})
+</script>

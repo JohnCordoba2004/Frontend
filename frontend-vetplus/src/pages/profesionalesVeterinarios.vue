@@ -1,80 +1,73 @@
 <template>
-  <section class="bg-white py-8 sm:py-12 lg:py-18">
+  <section class="bg-white py-8 sm:py-12 lg:py-14">
     <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
       <!-- Titulo -->
       <div class=" flex items-center gap-4 text-center mb-8 sm:mb-10 lg:mb-12">
         <i class="fa-solid fa-kit-medical text-2xl"></i>
-        <h2 class="text-sm sm:text-3xl md:text-3xl lg:text-2xl font-bold">Otros</h2>
+        <h2 class="text-sm sm:text-3xl md:text-3xl lg:text-2xl font-bold">Profesionales Adscritos</h2>
       </div>
+
 
       <!-- Loading -->
       <div v-if="loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
         <SkeletonCard v-for="n in 5" :key="n" />
       </div>
 
-      <!-- Grid otross -->
-      <div v-else class="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 sm:grid-cols-3 lg:grid-cols-3">
-        <!-- Cards de cada plan -->
-        <div v-for="otros in otrosRaw" :key="otros._id"
-          class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden">
-
-          <!-- Contenido de la card -->
+      <!-- grid profesionales -->
+      <div class="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 sm:grid-cols-3 lg:grid-cols-3" v-else>
+        <!-- Cards -->
+        <div
+          class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden"
+          v-for="profesionales in planesProfesionales" :key="profesionales._id">
+          <!-- Contenido card -->
           <div class="p-4 sm:p-5 lg:p-6 flex flex-col h-full mt-auto gap-2 sm:gap-4">
-
             <div class="flex-grow">
-              <!-- Titulo -->
+              <!-- Name -->
               <h3
                 class="text-lg sm:text-xl lg:text-xl text-balance sm:text-pretty font-semibold text-gray-600 mb-3 sm:mb-4 text-start">
-                {{ otros.name }}
+                {{ profesionales.name }}
               </h3>
-
-              <!-- Direccion -->
+              <!-- Specialty -->
               <div class="flex items-start text-sm mt-2 gap-2 sm:gap-2.5">
+                <i class="fa-solid fa-flask"></i>
+                <h3 class="text-sm sm:text-xs">
+                  Especialidad:
+                  {{ profesionales.specialty.join(', ').replace(',', " - ") }}
+                </h3>
+              </div>
+              <!-- Direction -->
+              <div class="flex items-start gap-2 sm:gap-2.5 mt-2">
                 <i class="fa-solid fa-location-pin"></i>
                 <h3 class="text-sm sm:text-xs">
                   Direccion:
-                  <a :href="`https://www.google.com/maps/search/?api=1&query=${otros.direction[0]} ${otros.city}`"
+                  <a :href="`https://www.google.com/maps/search/?api=1&query=${profesionales.direction}`"
                     target="_blank">
-                    {{ otros.direction[0] }}
+                    {{ profesionales.direction.join(',') }}
                   </a>
                 </h3>
               </div>
-
-              <!-- Telefono -->
-              <div class="flex items-start text-sm mt-2 gap-2 sm:gap-2.5">
-                <i class="fa-solid fa-square-phone"></i>
-                <h3 class="text-sm sm:text-xs">
-                  Telefono:
-                  <span class="text-balance">
-                    {{ otros.phone.join(', ').replace(",", "-") }}
-                  </span>
-                </h3>
-              </div>
-
-              <!-- Web -->
-              <div class="flex items-start text-sm mt-2 gap-2 sm:gap-2.5 ">
+              <!-- Webs -->
+              <div class="flex items-center gap-2 sm:gap-2.5 mt-2 mb-10">
                 <i class="fa-solid fa-earth-americas mt-1"></i>
                 <h3 class="text-sm flex-1 break-all">
                   Web:
-                  <a :href="otros.webs[0]" target="_blank" class="hover:underline font-medium">
-                    {{ otros.webs.join(', ') }}
+                  <a :href="profesionales.webs" target="_blank" class="hover:underline font-medium">
+                    {{ profesionales.webs.join(', ') }}
                   </a>
                 </h3>
               </div>
-            </div>
 
-            <!-- Ciudad -->
-            <div class="city text-center mt-10 bg-sky-100">
-              <i class="fa-solid fa-map-pin"></i>
-              {{ otros.city.join(", ").replace(",", " - ") }}
+              <!-- Btn mostrar mas -->
+              <RouterLink :to="`/profesionales/${profesionales._id}`"
+                class="w-full px-2 py-1.5 sm:py-2 bg-sky-100 text-sky-400 text-center rounded-lg hover:bg-blue-700 transition-colors duration-300 text-sm sm:text-base font-medium ">
+                Ver más
+              </RouterLink>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </section>
-
   <section class="bg-gray-100 py-8 sm:py-10">
     <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 sm:px-6 md:px-8 lg:flex-row lg:gap-8 xl:px-10 2xl:px-0">
       <!-- Cobertura -->
@@ -120,46 +113,39 @@
       </div>
     </div>
   </section>
-  <Copyright />
+  <copyright />
 </template>
+
 <script setup>
 import { onMounted, ref } from 'vue';
 import SkeletonCard from '../components/SkeletonCard.vue';
-import Copyright from '../components/copyright.vue';
-import { useHead } from '@unhead/vue'
+import copyright from '../components/copyright.vue';
+import { useHead } from "@unhead/vue";
 
 useHead({
-  title: 'Otros',
+  title: 'Profesionales Adscritos',
   meta: [
     // Descripción normal para Google
-    { name: 'description', content: 'VetPlus Medicina Prepagada ofrece planes con excelentes coberturas, servicios, clínicas veterinarias y beneficios adicionales que se ajustan a sus necesidades...' },
-
+    { name: 'description', content: 'Gana beneficios recomendando VetPlus a tus amigos.' },
     // Configuración para WhatsApp / Redes Sociales
     { property: 'og:title', content: 'VetPlus | Medicina Prepagada' },
     { property: 'og:description', content: 'Conoce nuestros planes y red de veterinarios.' },
-    { property: 'og:image', content: 'https://res.cloudinary.com/diro0cqpe/image/upload/v1761360294/planes-para-perros_r6zggu.png' },
+    { property: 'og:image', content: 'https://res.cloudinary.com/diro0cqpe/image/upload/v1759885003/tab-urgencias_u8a38g.jpg' },
     { property: 'og:type', content: 'website' }
   ]
 })
 
-const otrosRaw = ref([])//Guardamos lo que nos trae la api
-const loading = ref(true)
+const planesProfesionales = ref([])//Guardamos lo que venga de nuestra api
 const API_URL = 'https://backend-vetplus.onrender.com'
-
+const loading = ref(true)
 onMounted(async () => {
   try {
-    const res = await fetch(`${API_URL}/api/otros`)
-
-    if (!res.ok) throw new Error("no se encontro datos")
-
-    otrosRaw.value = await res.json()
-    // console.log(otrosRaw);
+    const res = await fetch(`${API_URL}/api/profesionales`)
+    planesProfesionales.value = await res.json()
   } catch (error) {
-    console.error('Error al cargar datos', error)
-    error.value = "No se pudo cargar los datos. Intenta de nuevo"
+    console.error('Error al cargar los planes', Error)
   } finally {
-    loading.value = false;
+    loading.value = false
   }
 })
-
 </script>

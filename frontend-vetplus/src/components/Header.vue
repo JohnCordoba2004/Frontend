@@ -53,28 +53,33 @@
 
             <!-- Dropdown: Planes -->
             <li class="relative group max-lg:border-b max-lg:border-gray-300 max-lg:py-3">
-              <a href="#" class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">
+              <a href="#" @click.prevent="isPlanesOpen = !isPlanesOpen"
+                class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">
                 <span class="inline-flex items-center">
                   Planes
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="ml-1 inline-block fill-current"
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    :class="['ml-1 inline-block fill-current transition-transform duration-300', isPlanesOpen && 'max-lg:rotate-180']"
                     viewBox="0 0 24 24" aria-hidden="true">
                     <path
                       d="M12 16a1 1 0 0 1-.71-.29l-6-6a1 1 0 0 1 1.42-1.42l5.29 5.3 5.29-5.29a1 1 0 0 1 1.41 1.41l-6 6a1 1 0 0 1-.7.29z" />
                   </svg>
                 </span>
               </a>
-              <!-- Nota: group-hover solo aplica en desktop; en móvil se verán como enlaces normales -->
-              <ul class="absolute -left-6 min-w-[250px] bg-white shadow-lg px-6 space-y-3
-                       lg:top-5 max-lg:top-8
-                       max-h-0 overflow-hidden opacity-0
-                       group-hover:max-h-[700px] group-hover:opacity-100 group-hover:pb-4 group-hover:pt-6
-                       transition-all duration-500">
+              <ul :class="[
+                'absolute -left-6 min-w-[250px] bg-white shadow-lg px-6 space-y-3 transition-all duration-500',
+                'lg:top-5 max-lg:top-full max-lg:relative max-lg:left-0 max-lg:min-w-full max-lg:shadow-none max-lg:px-0 max-lg:mt-2',
+                // Desktop: group-hover
+                'lg:max-h-0 lg:overflow-hidden lg:opacity-0 lg:group-hover:max-h-[700px] lg:group-hover:opacity-100 lg:group-hover:pb-4 lg:group-hover:pt-6',
+                // Mobile: estado controlado
+                'max-lg:max-h-0 max-lg:overflow-hidden max-lg:opacity-0',
+                isPlanesOpen && 'max-lg:max-h-[300px] max-lg:opacity-100 max-lg:pb-2 max-lg:pt-2'
+              ]">
                 <li class="border-b border-gray-300 py-2">
-                  <a href="/PlanesPerro"
+                  <a href="/PlanesPerro" @click="isOpen = false"
                     class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Perros</a>
                 </li>
-                <li class="border-b border-gray-300 py-2">
-                  <a href="/PlanesGato"
+                <li class=" border-gray-300 py-2">
+                  <a href="/PlanesGato" @click="isOpen = false"
                     class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Gatos</a>
                 </li>
               </ul>
@@ -82,33 +87,38 @@
 
             <!-- Dropdown: Nuestra Red -->
             <li class="relative group max-lg:border-b max-lg:border-gray-300 max-lg:py-3">
-              <a href="#" class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">
+              <a href="/NuestraRed" @click="isNuestraRedOpen = !isNuestraRedOpen"
+                class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">
                 <span class="inline-flex items-center">
                   Nuestra Red
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="ml-1 inline-block fill-current"
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    :class="['ml-1 inline-block fill-current transition-transform duration-300', isNuestraRedOpen && 'max-lg:rotate-180']"
                     viewBox="0 0 24 24" aria-hidden="true">
                     <path
                       d="M12 16a1 1 0 0 1-.71-.29l-6-6a1 1 0 0 1 1.42-1.42l5.29 5.3 5.29-5.29a1 1 0 0 1 1.41 1.41l-6 6a1 1 0 0 1-.7.29z" />
                   </svg>
                 </span>
               </a>
-              <ul class="absolute -left-6 min-w-[250px] bg-white shadow-lg px-6 space-y-3
-                       lg:top-5 max-lg:top-8
-                       max-h-0 overflow-hidden opacity-0
-                       group-hover:max-h-[700px] group-hover:opacity-100 group-hover:pb-4 group-hover:pt-6
-                       transition-all duration-500">
+              <ul :class="[
+                'absolute -left-6 min-w-[250px] bg-white shadow-lg px-6 space-y-3 transition-all duration-500',
+                'lg:top-5 max-lg:top-full max-lg:relative max-lg:left-0 max-lg:min-w-full max-lg:shadow-none max-lg:px-0 max-lg:mt-2',
+                // Desktop: group-hover
+                'lg:max-h-0 lg:overflow-hidden lg:opacity-0 lg:group-hover:max-h-[700px] lg:group-hover:opacity-100 lg:group-hover:pb-4 lg:group-hover:pt-6',
+                // Mobile: estado controlado
+                'max-lg:max-h-0 max-lg:overflow-hidden max-lg:opacity-0',
+                isNuestraRedOpen && 'max-lg:max-h-[300px] max-lg:opacity-100 max-lg:pb-2 max-lg:pt-2'
+              ]">
                 <li class="border-b border-gray-300 py-2">
-                  <a href="/ClinicasVeterinarias"
-                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Clínicas
-                    Veterinarias</a>
+                  <a href="/ClinicasVeterinarias" @click="isNuestraRedOpen = false"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Clínicas Veterinarias</a>
                 </li>
                 <li class="border-b border-gray-300 py-2">
-                  <a href="/ProfesionalesVet"
-                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Profesionales
-                    adscritos</a>
+                  <a href="/ProfesionalesVet" @click="isNuestraRedOpen = false"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Profesionales adscritos</a>
                 </li>
-                <li class="border-b border-gray-300 py-2">
-                  <a href="/Otros" class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Otros</a>
+                <li class="border-gray-300 py-2">
+                  <a href="/Otros" @click="isNuestraRedOpen = false"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Otros</a>
                 </li>
               </ul>
             </li>
@@ -161,6 +171,8 @@
 import { ref } from 'vue';
 
 const isOpen = ref(false)
+const isPlanesOpen = ref(false)
+const isNuestraRedOpen = ref(false)
 
 function toggleButton() {
   isOpen.value = !isOpen.value

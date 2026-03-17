@@ -1,5 +1,46 @@
+<script setup>
+import { ref, onMounted, computed } from 'vue';
+import SkeletonCard from './SkeletonCard.vue';
+
+// 1. Definimos la propiedad para recibir "cat" desde el padre
+const props = defineProps({
+  tipoFiltro: {
+    type: String,
+    default: 'dog' // Valor por defecto
+  }
+});
+
+const planesRaw = ref([]) // Aquí guardamos lo que llega de la API
+const loading = ref(true)
+const API_URL = 'https://backend-vetplus.onrender.com'
+
+// 2. Lógica de filtrado: Esta es la que quita el tercer plan
+const planesFiltrados = computed(() => {
+  if (props.tipoFiltro === 'cat') {
+    // Filtramos el array original para dejar solo Diamante y Esmeralda
+    return planesRaw.value.filter(plan =>
+      plan.name.toLowerCase().includes('diamante') ||
+      plan.name.toLowerCase().includes('esmeralda')
+    );
+  }
+  // Si no es "cat", mostramos todos (perros)
+  return planesRaw.value;
+});
+
+onMounted(async () => {
+  try {
+    const res = await fetch(`${API_URL}/api/planes/tipo/dog`)
+    // Guardamos los datos en la variable "Raw" (cruda)
+    planesRaw.value = await res.json()
+  } catch (error) {
+    console.error("Error al cargar los planes", error);
+  } finally {
+    loading.value = false
+  }
+})
+</script>
 <template>
-  <section class="bg-gray-50 py-12 sm:py-16 lg:py-20">
+  <section class="bg-gray-50 py-12 sm:py-16 lg:py-20 mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Titulo de seccion -->
       <div class="text-center mb-8 sm:mb-10 lg:mb-12">
@@ -11,18 +52,14 @@
         </p>
       </div>
 
-      <!-- Loading -->
-      <div v-if="loading" class="text-center text-gray-600 py-8">
-        <div class="inline-flex items-center gap-2">
-          <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
-          <span class="text-sm sm:text-base">Cargando Planes...</span>
-        </div>
+      <div v-if="loading" class="grid col-span-1 md:grid-cols-2 lg:grid-cols-2">
+        <SkeletonCard v-for="n in 3" :key="n"></SkeletonCard>
       </div>
 
       <!-- Grid de planes -->
-      <div v-else class="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div v-else class="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
         <!-- Card de cada plan -->
-        <div v-for="plan in planes" :key="plan._id"
+        <div v-for="plan in planesFiltrados" :key="plan._id"
           class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden">
 
           <!-- Imagen -->
@@ -70,25 +107,3 @@
     </div>
   </section>
 </template>
-<script setup>
-import { ref, onMounted } from 'vue';
-
-// Estado
-const planes = ref([])
-const loading = ref(true)
-
-// URL de Render
-const API_URL = 'https://backend-vetplus.onrender.com'
-
-// Llamado a la API
-onMounted(async () => {
-  try {
-    const res = await fetch(`${API_URL}/api/planes/tipo/dog`)
-    planes.value = await res.json()
-  } catch (error) {
-    console.error("Error al cargar los planes", error);
-  } finally {
-    loading.value = false
-  }
-})
-</script>

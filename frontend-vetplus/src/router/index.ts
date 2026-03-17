@@ -12,12 +12,13 @@ import nuestraRed from "../pages/nuestraRed.vue";
 import planesPerro from "../pages/planesPerro.vue";
 import planesGato from "../pages/planesGato.vue";
 import clinicasVeterinarias from "../pages/clinicasVeterinarias.vue";
-import profesionalesVeterimarios from "../pages/profesionalesVeterimarios.vue";
+import profesionalesVeterinarios from "../pages/profesionalesVeterinarios.vue";
 import otros from "../pages/otros.vue";
 import beneficios from "../pages/beneficios.vue";
 const routes = [
   /* Example routes */
   { path: "/", component: Home, name: "Home" },
+
   /* Planes */
   { path: "/Planes", component: Planes, name: "Planes" },
   // 🟢 Nueva ruta dinámica
@@ -27,10 +28,32 @@ const routes = [
     name: "PlanDetail",
     props: true,
   },
+  {
+    path: "/profesionales/:id",
+    component: () => import("../pages/profesionalesDetail.vue"),
+    name: "profesionalesDetail",
+    props: true,
+  },
+  {
+    path: "/beneficios/:id",
+    component: () => import("../pages/beneficiosDetail.vue"),
+    name: "beneficiosDetail",
+    props: true,
+  },
+
   /* Afiliate */
+  { path: "/VetPlus", component: VetPlus, name: "VetPlus" },
   { path: "/Afiliate", component: Afiliate, name: "Afiliate" },
   /* Ver mas */
-  { path: "/VetPlus", component: VetPlus, name: "VetPlus" },
+  {
+    path: "/beneficios",
+    component: beneficios,
+    meta: {
+      title: "Beneficios Exclusivos",
+      description:
+        "Conoce los descuentos y ventajas de estar afiliado a VetPlus.",
+    },
+  },
   {
     path: "/porQueVetplus",
     component: porQueVetplus,
@@ -78,7 +101,7 @@ const routes = [
   },
   {
     path: "/ProfesionalesVet",
-    component: profesionalesVeterimarios,
+    component: profesionalesVeterinarios,
     name: "ProfesionalesVeterinarios",
   },
   {
