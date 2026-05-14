@@ -2,22 +2,23 @@
   <header
     class="relative z-50 bg-white border-b-2 border-gray-300 shadow-lg min-h-[60px] sm:min-h-[70px] tracking-widest">
     <div class="w-full px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-6">
-      <div class="mx-auto flex flex-nowrap items-center justify-between gap-4 sm:gap-6 w-full max-w-screen-xl">
+      <div class="mx-auto flex flex-nowrap items-center justify-between gap-4 sm:gap-6 w-full max-w-7xl">
         <!-- Logo -->
         <a href="/" class="flex items-center">
-          <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1759439965/LogoVetPlus_mfsa9b.webp" alt="VetPlus"
-            class="w-32 sm:w-40 md:w-48 lg:w-56 xl:w-[224px] h-auto" />
+          <span class="text-2xl sm:text-3xl font-black tracking-tight text-sky-700">
+            Pet<span class="text-gray-900">Salud</span>
+          </span>
         </a>
 
         <!-- Menú lateral / Navbar -->
         <div id="collapseMenu" :class="[
           isOpen ? 'block' : 'hidden',
           // overlay oscuro solo en móvil/tablet
-          'lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50'
+          'lg:block! max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50'
         ]">
           <!-- Botón cerrar (solo móvil) -->
           <button id="toggleClose" @click="toggleButton"
-            class="lg:hidden fixed top-12 right-8 z-[100] rounded-full bg-white w-9 h-9 flex items-center justify-center border border-gray-200"
+            class="lg:hidden fixed top-12 right-8 z-100 rounded-full bg-white w-9 h-9 flex items-center justify-center border border-gray-200"
             aria-label="Cerrar menú">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 fill-black" viewBox="0 0 320.591 320.591"
               aria-hidden="true">
@@ -36,8 +37,9 @@
             <!-- Logo dentro del menú móvil -->
             <li class="mb-4 sm:mb-6 hidden max-lg:block">
               <a href="/">
-                <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1759439965/LogoVetPlus_mfsa9b.webp"
-                  alt="VetPlus" class="w-28 sm:w-32 lg:w-36 h-auto" />
+                <span class="text-2xl font-black tracking-tight text-sky-700">
+                  Pet<span class="text-gray-900">Salud</span>
+                </span>
               </a>
             </li>
 
@@ -47,8 +49,8 @@
                 class="block text-sm sm:text-[15px] font-semibold text-blue-600 hover:text-blue-700">Inicio</a>
             </li>
             <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-2 sm:max-lg:py-3">
-              <a href="/VetPlus"
-                class="block text-sm sm:text-[15px] font-semibold text-gray-600 hover:text-blue-700">Vetplus</a>
+              <a href="/PetSalud"
+                class="block text-sm sm:text-[15px] font-semibold text-gray-600 hover:text-blue-700">PetSalud</a>
             </li>
 
             <!-- Dropdown: Planes -->
@@ -139,7 +141,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
               </svg>
-              <span class="text-sm">(+57) 310 7850994</span>
+              <span class="text-sm">(+57) 300 000 0000</span>
             </li>
           </ul>
         </div>
@@ -151,7 +153,7 @@
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
           </svg>
-          <span class="text-sm">(+57) 310 7850994</span>
+          <span class="text-sm">(+57) 300 000 0000</span>
         </div>
 
         <!-- Botón abrir menú (hamburguesa) -->

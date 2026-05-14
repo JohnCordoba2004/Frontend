@@ -1,109 +1,84 @@
 <template>
-  <section class="relative bg-sky-200 pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 lg:pb-20 overflow-hidden"
-    ref="heroSection">
-    <div
-      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-8 lg:gap-10 relative z-10 transition-all duration-500 ease-out">
+  <section
+    class="hero-content relative min-h-[90vh] flex items-center bg-linear-to-br from-sky-50 via-white to-sky-100 overflow-hidden">
+    <!-- Fondo decorativo sutil -->
+    <div class="absolute inset-0 bg-[radial-gradient(at_top_right,#bae6fd_0%,transparent_50%)]"></div>
 
-      <!-- Columna texto -->
-      <div class="flex-1 lg:flex-[0.9] max-w-xl lg:max-w-2xl relative z-20 transition-all duration-500 delay-100">
-        <div class="backdrop-blur-md bg-white/50 rounded-xl p-4 sm:p-6 lg:p-8 shadow-xl">
-          <h1 ref="title"
-            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight mb-6 sm:mb-8 lg:mb-10 text-gray-900 leading-tight">
-            ¡Cada mascota es única y tiene su propia personalizada!
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-0 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+        <!-- Columna izquierda - Texto -->
+        <div class="space-y-8 lg:space-y-10">
+          <div
+            class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full text-sky-600 text-sm font-medium shadow-sm">
+            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+            Medicina Prepagada Veterinaria
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter leading-none text-gray-900">
+            Tu mascota merece<br>
+            <span class="text-sky-600">atención de verdad</span>
           </h1>
-          <p ref="paragraph"
-            class="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-600 leading-relaxed text-balance mb-6 sm:mb-8 lg:mb-10">
-            Entendemos que tienen necesidades particulares, por eso con Medicina Prepagada Veterinaria, queremos
-            brindarle a tu peludito la atención oportuna y de calidad que él necesita.
+
+          <p class="text-lg lg:text-xl text-gray-600 max-w-lg leading-relaxed">
+            Planes personalizados de medicina prepagada para perros y gatos.
+            Atención veterinaria de calidad cuando más la necesitas.
           </p>
-          <div ref="buttons" class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+
+          <div class="flex flex-col sm:flex-row gap-4">
             <a href="/Planes"
-              class="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-sky-600/30 to-sky-300 text-blue-900 rounded-md shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base font-medium text-center">
-              Ver Planes
+              class="px-8 py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-2xl text-center transition-all duration-300 shadow-lg shadow-sky-500/30">
+              Ver nuestros planes
             </a>
             <a href="/Afiliate"
-              class="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-sky-300 to-sky-600/30 text-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:bg-sky-300/40 text-sm sm:text-base font-medium flex items-center justify-center gap-2">
-              Contáctanos
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="#31B8FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block">
-                <path d="M5 12h13M12 5l7 7-7 7" />
-              </svg>
+              class="px-8 py-4 border-2 border-sky-600 text-sky-700 hover:bg-sky-50 font-semibold rounded-2xl text-center transition-all duration-300">
+              Afiliarme ahora
             </a>
           </div>
-        </div>
-      </div>
 
-      <!-- Columna imagen sin degradado-->
-      <div ref="imageWrapper"
-        class="flex-1 lg:flex-[1.1] relative flex justify-center transition-all duration-500 delay-200">
-        <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1759439965/thumbnail_perro_1_c45ff4.webp"
-          alt="Mascota Feliz"
-          class="w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[500px] object-cover rounded-xl shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-500">
+          <!-- Confianza -->
+          <div class="flex items-center gap-8 text-sm text-gray-500 pt-4">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">⭐</span>
+              <div>
+                <div class="font-medium text-gray-900">4.9/5</div>
+                <div class="text-xs">Calificación de clientes</div>
+              </div>
+            </div>
+            <div>✓ Atención 24/7</div>
+            <div>✓ Cobertura nacional</div>
+          </div>
+        </div>
+
+        <!-- Columna derecha - Imagen -->
+        <div class="hero-content relative flex justify-center lg:justify-end">
+          <div class="relative">
+            <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1759439965/thumbnail_perro_1_c45ff4.webp"
+              alt="Mascota Feliz - PetSalud" class="w-full max-w-lg lg:max-w-xl rounded-3xl shadow-2xl">
+            <!-- Badge flotante -->
+            <div class="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl px-5 py-3 flex items-center gap-3">
+              <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-2xl">🐾</div>
+              <div>
+                <div class="font-semibold text-emerald-700">Protegido</div>
+                <div class="text-xs text-gray-500">por PetSalud</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 </template>
+
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 import { gsap } from 'gsap';
 
-const heroSection = ref(null);
-const title = ref(null);
-const paragraph = ref(null)
-const buttons = ref(null) //Contenedor de botones
-const imageWrapper = ref(null)
-
 onMounted(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        animateHero()
-        observer.disconnect()
-      }
-    },
-    { threshold: 0.2 }
-  )
-  if (heroSection.value) observer.observe(heroSection.value)
-})
-
-function animateHero() {
-  const tl = gsap.timeline({ defaults: { duration: 0.8, ease: 'power4.out' } })
-
-  // 1. Titulo con fade-in
-  tl.from(title.value, { opacity: 0, y: 40 })
-
-  // 2. Párrafo con fade-in
-  tl.from(paragraph.value, { opacity: 0, y: 30 }, '-=0.4')
-
-  // 3.Botones con animación suave y escalonada
-  const btns = buttons.value.querySelectorAll('a')
-  tl.fromTo(btns,
-    { y: 30, opacity: 0, scale: 0.55, duration: 1 },
-    {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      stagger: 0.1,
-      duration: 0.6,
-      ease: 'power2.out'
-    },
-    '-=0.2'
-  )
-
-  // 4. Imagen con animación suave y fluida
-  tl.fromTo(imageWrapper.value,
-    {
-      scale: 0.88,
-      duration: 0.6,
-      ease: 'power1.in'
-    },
-    {
-      scale: 1,
-      duration: 0.8,
-      ease: 'power1.out'
-    },
-    '-=0.3'
-  )
-}
-
+  gsap.fromTo(".hero-content",
+    { opacity: 0, y: 50 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
+  );
+});
 </script>

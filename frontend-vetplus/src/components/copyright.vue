@@ -1,11 +1,32 @@
 <template>
-  <section class="bg-sky-600 px-4 py-6">
-    <div class="flex flex-col">
-      <h2 class="text-white font-bold text-lg mb-2 ml-20">Todos los derechos reservados</h2>
-      <p class="text-blue-100 text-sm mb-4 ml-20">VetPlus Colombia</p>
-      <a href="#top" class="bg-white text-blue-600 px-6 py-2 rounded hover:bg-gray-100 self-end">
-        Ir Arriba ↑
-      </a>
+  <footer class="bg-zinc-950 text-gray-400 py-8 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+        <!-- Derechos reservados -->
+        <div class="text-center md:text-left">
+          <p class="text-sm">
+            &copy; {{ new Date().getFullYear() }} PetSalud Colombia.
+            <span class="text-gray-500">Todos los derechos reservados.</span>
+          </p>
+          <p class="text-xs text-gray-500 mt-1">
+            Medicina Prepagada Veterinaria
+          </p>
+        </div>
+
+        <!-- Botón Ir Arriba -->
+        <a href="#top"
+          class="group flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-2xl transition-all duration-300 text-sm font-medium">
+          Volver arriba
+          <span class="text-lg transition-transform group-hover:-translate-y-1"><i
+              class="fa-solid fa-arrow-up"></i></span>
+        </a>
+
+      </div>
     </div>
-  </section>
+  </footer>
 </template>
+
+<script setup>
+// No necesitamos nada por ahora
+</script>

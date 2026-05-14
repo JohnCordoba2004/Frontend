@@ -1,71 +1,89 @@
-<script setup>
-import footerInfo from '../components/footerInfo.vue';
-import copyright from '../components/copyright.vue';
-import { useHead } from '@unhead/vue';
-useHead({
-  title: 'Nuestra Red',
-  meta: [
-    {
-      name: 'description',
-      content: 'Conoce los especialistas y centros médicos aliados a VetPlus. Profesionales certificados listos para atender a tu mascota en todo el país.'
-    }
-  ]
-})
-</script>
-
 <template>
-  <div class="flex flex-col min-h-[calc(100vh-80px)]">
+  <div class="bg-white min-h-screen">
+    <section class="max-w-7xl mx-auto px-6 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-    <section class="flex-grow py-12 px-4 mx-auto max-w-7xl w-full">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-
+        <!-- Columna principal - Tarjetas -->
         <div class="lg:col-span-9">
-          <h1 class="text-4xl font-bold text-sky-400 mb-10">Red veterinarios</h1>
+          <div class="mb-12">
+            <span class="inline-block px-5 py-2 bg-sky-100 text-sky-700 rounded-3xl text-sm font-medium mb-4">
+              Nuestra Red
+            </span>
+            <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              Profesionales y clínicas<br>que cuidan a tu mascota
+            </h1>
+          </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="card-vet">
-              <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1769182290/clinicas1_vmjxp6.jpg"
-                class="w-full h-48 object-cover">
-              <a class="btnVet" href="/ClinicasVeterinarias">
-                Clinicas Veterinarias
-              </a>
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Tarjeta 1 -->
+            <div
+              class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100">
+              <div class="h-64 overflow-hidden">
+                <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1769182290/clinicas1_vmjxp6.jpg"
+                  alt="Clínicas Veterinarias"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-8">
+                <a href="/ClinicasVeterinarias"
+                  class="block text-center bg-sky-600 hover:bg-sky-700 text-white font-semibold py-4 rounded-2xl transition-all">
+                  Clínicas Veterinarias
+                </a>
+              </div>
             </div>
 
-            <div class="card-vet">
-              <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1769182290/clinicas2_wxtcp0.jpg"
-                class="w-full h-48 object-cover">
-              <a class="btnVet" href="/ProfesionalesVet">
-                Profesionales Adscritos
-              </a>
+            <!-- Tarjeta 2 -->
+            <div
+              class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100">
+              <div class="h-64 overflow-hidden">
+                <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1769182290/clinicas2_wxtcp0.jpg"
+                  alt="Profesionales Adscritos"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-8">
+                <a href="/ProfesionalesVet"
+                  class="block text-center bg-sky-600 hover:bg-sky-700 text-white font-semibold py-4 rounded-2xl transition-all">
+                  Profesionales Adscritos
+                </a>
+              </div>
             </div>
 
-            <div class="card-vet">
-              <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1769182868/clinicas3_vmqdrl.jpg"
-                class="w-full h-48 object-cover">
-              <a class="btnVet" href="/Otros">
-                Otros
-              </a>
+            <!-- Tarjeta 3 -->
+            <div
+              class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100">
+              <div class="h-64 overflow-hidden">
+                <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1769182868/clinicas3_vmqdrl.jpg"
+                  alt="Otros"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-8">
+                <a href="/Otros"
+                  class="block text-center bg-sky-600 hover:bg-sky-700 text-white font-semibold py-4 rounded-2xl transition-all">
+                  Otros Servicios
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="lg:col-span-3 space-y-6">
-          <div class="bg-gray-100 rounded-2xl p-6 shadow-sm border-l-4 border-sky-500">
-            <div class="flex items-center mb-4">
-              <div class="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center mr-3 text-white shadow-md">
-                <i class="fa-solid fa-paw text-lg"></i>
-              </div>
-              <h2 class="text-lg font-bold text-gray-800">Afíliate</h2>
+        <!-- Sidebar -->
+        <div class="lg:col-span-3 lg:sticky lg:top-8">
+          <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-3xl">🐾</div>
+              <h2 class="text-2xl font-semibold text-gray-900">Afíliate</h2>
             </div>
-            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-              Descubre la forma más fácil de cuidar a tu mascota con planes diseñados para ti.
+
+            <p class="text-gray-600 leading-relaxed mb-8">
+              Descubre la forma más fácil de cuidar a tu mascota con planes diseñados especialmente para ti.
             </p>
+
             <a href="/Afiliate"
-              class="inline-block bg-sky-400 text-white px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-sky-500 transition-all shadow-sm">
-              Afíliate aquí +
+              class="block w-full text-center bg-sky-600 hover:bg-sky-700 text-white font-semibold py-4 rounded-2xl transition-all">
+              Afíliate aquí
             </a>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -74,25 +92,19 @@ useHead({
   </div>
 </template>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+<script setup>
+import footerInfo from '../components/footerInfo.vue';
+import copyright from '../components/copyright.vue';
 
-h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #84D5F5;
-}
+import { useHead } from '@unhead/vue';
 
-
-.btnVet {
-  background-color: aliceblue;
-  color: black;
-  font-size: 1em;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px 5px;
-  padding: 10px;
-}
-</style>
+useHead({
+  title: 'Nuestra Red - PetSalud',
+  meta: [
+    {
+      name: 'description',
+      content: 'Conoce los especialistas y centros médicos aliados a PetSalud. Profesionales certificados listos para atender a tu mascota en todo el país.'
+    }
+  ]
+})
+</script>

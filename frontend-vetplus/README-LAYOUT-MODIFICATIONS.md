@@ -1,8 +1,8 @@
-# Modificaciones de Layout - VetPlus.vue
+# Modificaciones de Layout - PetSalud.vue
 
 ## Descripción del Cambio
 
-Se modificó la página `VetPlus.vue` para implementar un diseño de dos columnas que divide la sección principal en:
+Se modificó la página `PetSalud.vue` para implementar un diseño de dos columnas que divide la sección principal en:
 - **Área de contenido principal** (izquierda, más ancha)
 - **Barra lateral** (derecha, más estrecha)
 
@@ -28,7 +28,7 @@ Se modificó la página `VetPlus.vue` para implementar un diseño de dos columna
 ### 2. Área de Contenido Principal
 ```html
 <div class="col-span-2">
-  <!-- Contenido original de "¿Qué es VetPlus?" -->
+  <!-- Contenido original de "¿Qué es PetSalud?" -->
 </div>
 ```
 - Utiliza `col-span-2` para ocupar 2 de las 3 columnas del grid

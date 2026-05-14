@@ -1,8 +1,8 @@
-# 📱 Mejoras Responsive - Proyecto VetPlus
+# 📱 Mejoras Responsive - Proyecto PetSalud
 
 ## 🎯 Resumen del Proyecto
 
-Este documento detalla todas las mejoras implementadas para hacer el proyecto VetPlus completamente responsive, optimizando la experiencia de usuario en todos los dispositivos desde móviles hasta pantallas de escritorio.
+Este documento detalla todas las mejoras implementadas para hacer el proyecto PetSalud completamente responsive, optimizando la experiencia de usuario en todos los dispositivos desde móviles hasta pantallas de escritorio.
 
 ## 📊 Antes vs Después
 
@@ -408,7 +408,7 @@ Si tienes preguntas sobre las implementaciones responsive o necesitas ayuda con 
 
 ## 📄 Licencia
 
-Este proyecto es parte del desarrollo de VetPlus y está sujeto a las políticas de la empresa.
+Este proyecto es parte del desarrollo de PetSalud y está sujeto a las políticas de la empresa.
 
 ---
 

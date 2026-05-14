@@ -1,4 +1,4 @@
-# 📋 Changelog - Mejoras Responsive VetPlus
+# 📋 Changelog - Mejoras Responsive PetSalud
 
 ## 🚀 Versión 2.0.0 - Responsive Design Implementation
 **Fecha**: Enero 2025  
@@ -55,7 +55,7 @@
 **Antes**: Tabs fijos, layout rígido  
 **Después**: Tabs con scroll, layout completamente flexible
 
-#### **6. VetPlus.vue**
+#### **6. PetSalud.vue**
 - **Layout responsivo**: Mejor distribución móvil/desktop
 - **Imágenes adaptativas**: Alturas escalables
 - **Tipografía mejorada**: Sistema de tamaños adaptativo
@@ -286,7 +286,7 @@ npm run build && npm run preview
 
 ## 🎉 Conclusión
 
-Esta actualización transforma completamente la experiencia de usuario de VetPlus, implementando un diseño responsive moderno y optimizado para todos los dispositivos. El proyecto ahora sigue las mejores prácticas de desarrollo web y proporciona una experiencia consistente y profesional.
+Esta actualización transforma completamente la experiencia de usuario de PetSalud, implementando un diseño responsive moderno y optimizado para todos los dispositivos. El proyecto ahora sigue las mejores prácticas de desarrollo web y proporciona una experiencia consistente y profesional.
 
 **¡La aplicación está lista para el futuro del desarrollo web! 🚀**
 

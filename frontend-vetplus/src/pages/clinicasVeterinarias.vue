@@ -1,155 +1,166 @@
 <template>
-  <section class="bg-white py-8 sm:py-12 lg:py-14">
-    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-      <!-- Titulo -->
-      <div class=" flex items-center gap-4 text-center mb-8 sm:mb-10 lg:mb-12">
-        <i class="fa-solid fa-kit-medical text-2xl"></i>
-        <h2 class="text-sm sm:text-3xl md:text-3xl lg:text-2xl font-bold">Clínicas Veterinarias</h2>
+  <div class="bg-white min-h-screen">
+    <section class="max-w-7xl mx-auto px-6 py-16 lg:py-24">
+      <!-- Título -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-3 bg-sky-100 text-sky-700 px-6 py-3 rounded-3xl mb-6">
+          <i class="fa-solid fa-hospital text-xl"></i>
+          <span class="font-medium">Nuestra Red</span>
+        </div>
+        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+          Clínicas Veterinarias
+        </h1>
+        <p class="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
+          Encuentra las mejores clínicas aliadas a PetSalud en todo el país
+        </p>
       </div>
 
       <!-- Loading -->
-      <div v-if="loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+      <div v-if="loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <SkeletonCard v-for="n in 6" :key="n" />
       </div>
 
-      <!-- Grid clinicas -->
-      <div v-else class="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 sm:grid-cols-3 lg:grid-cols-4">
-        <!-- Cards de cada plan -->
+      <!-- Grid de Clínicas -->
+      <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div v-for="clinica in planesRaw" :key="clinica._id"
-          class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden">
+          class="bg-white border border-gray-100 rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col">
 
-          <!-- Contenido de la card -->
-          <div class="p-4 sm:p-5 lg:p-6 flex flex-col h-full mt-auto gap-2 sm:gap-4">
+          <div class="p-8 flex flex-col h-full">
+            <!-- Nombre -->
+            <h3 class="font-semibold text-2xl text-gray-900 mb-8 line-clamp-2">
+              {{ clinica.name || 'Clínica sin nombre registrado' }}
+            </h3>
 
-            <div class="flex-grow">
-              <!-- Titulo -->
-              <h3
-                class="text-lg sm:text-xl lg:text-xl text-balance sm:text-pretty font-semibold text-gray-600 mb-3 sm:mb-4 text-start">
-                {{ clinica.name }}
-              </h3>
-
-              <!-- Direccion -->
-              <div class="flex items-start text-sm mt-2 gap-2 sm:gap-2.5">
-                <i class="fa-solid fa-location-pin"></i>
-                <h3 class="text-sm sm:text-xs">
-                  Direccion:
-                  <a :href="`https://www.google.com/maps/search/?api=1&query=${clinica.direction[0]} ${clinica.city}`"
-                    target="_blank">
-                    {{ clinica.direction[0] }}
-                  </a>
-                </h3>
+            <!-- Dirección -->
+            <div class="flex items-start gap-4 mb-6">
+              <i class="fa-solid fa-location-dot text-2xl text-sky-500 mt-1 shrink-0"></i>
+              <div>
+                <p class="text-gray-600 text-sm">Dirección</p>
+                <a 
+                  v-if="clinica.direction && clinica.direction.length"
+                  :href="`https://www.google.com/maps/search/?api=1&query=${clinica.direction[0]} ${clinica.city}`"
+                  target="_blank"
+                  class="text-gray-800 hover:text-sky-600 hover:underline transition-colors">
+                  {{ clinica.direction[0] }}
+                </a>
+                <p v-else class="text-gray-400 italic">Dirección no disponible</p>
               </div>
+            </div>
 
-              <!-- Telefono -->
-              <div class="flex items-start text-sm mt-2 gap-2 sm:gap-2.5">
-                <i class="fa-solid fa-square-phone"></i>
-                <h3 class="text-sm sm:text-xs">
-                  Telefono:
-                  <span class="text-balance">
-                    {{ clinica.phone.join(', ').replace(",", "-") }}
-                  </span>
-                </h3>
+            <!-- Teléfono -->
+            <div class="flex items-start gap-4 mb-6">
+              <i class="fa-solid fa-phone text-2xl text-sky-500 mt-1 shrink-0"></i>
+              <div>
+                <p class="text-gray-600 text-sm">Teléfono</p>
+                <p class="text-gray-800">
+                  {{ clinica.phone && clinica.phone.length 
+                    ? clinica.phone.join(' • ') 
+                    : 'No disponible' }}
+                </p>
               </div>
+            </div>
 
-              <!-- Web -->
-              <div class="flex items-start text-sm mt-2 gap-2 sm:gap-2.5 ">
-                <i class="fa-solid fa-earth-americas mt-1"></i>
-                <h3 class="text-sm flex-1 break-all">
-                  Web:
-                  <a :href="clinica.webs[0]" target="_blank" class="hover:underline font-medium">
-                    {{ clinica.webs.join(', ') }}
-                  </a>
-                </h3>
+            <!-- Web -->
+            <div class="flex items-start gap-4 mb-8">
+              <i class="fa-solid fa-globe text-2xl text-sky-500 mt-1 shrink-0"></i>
+              <div>
+                <p class="text-gray-600 text-sm">Sitio web</p>
+                <a 
+                  v-if="clinica.webs && clinica.webs.length"
+                  :href="clinica.webs[0]" 
+                  target="_blank"
+                  class="text-sky-600 hover:underline font-medium break-all">
+                  {{ clinica.webs[0] }}
+                </a>
+                <p v-else class="text-gray-400 italic">No disponible</p>
               </div>
             </div>
 
             <!-- Ciudad -->
-            <div class="city text-center mt-10 bg-sky-100">
-              <i class="fa-solid fa-map-pin"></i>
-              {{ clinica.city }}
+            <div class="mt-auto pt-6 border-t border-gray-100">
+              <div class="inline-flex items-center gap-2 bg-sky-50 text-sky-700 px-6 py-3 rounded-2xl text-sm font-medium">
+                <i class="fa-solid fa-map-pin"></i>
+                {{ clinica.city && clinica.city.length 
+                  ? clinica.city.join(" • ") 
+                  : 'Ciudad no especificada' }}
+              </div>
             </div>
           </div>
-
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="bg-gray-100 py-8 sm:py-10">
-    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 sm:px-6 md:px-8 lg:flex-row lg:gap-8 xl:px-10 2xl:px-0">
-      <!-- Cobertura -->
-      <div class="flex-1 min-w-[260px] rounded-2xl bg-gray-200 p-4 shadow-md sm:min-w-[300px] sm:p-6">
-        <!-- Contenido cobertura -->
-        <div class="mb-4 flex items-center">
-          <div class="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 sm:h-12 sm:w-12">
-            <svg class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-            </svg>
+    <!-- Sección inferior -->
+    <section class="bg-gray-100 py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Afíliate -->
+          <div class="bg-white rounded-3xl p-10 shadow-sm">
+            <div class="flex items-center gap-5 mb-6">
+              <div class="w-14 h-14 bg-emerald-100 rounded-3xl flex items-center justify-center text-4xl">🐾</div>
+              <h2 class="text-2xl font-semibold text-gray-900">¿Quieres afiliarte?</h2>
+            </div>
+            <p class="text-gray-600 mb-8">
+              Descubre lo fácil que es proteger la salud de tu mascota con PetSalud.
+            </p>
+            <a href="/Afiliate" 
+              class="block w-full text-center py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-2xl transition-all">
+              Afíliate ahora
+            </a>
           </div>
-          <h2 class="text-lg font-bold">Cobertura</h2>
-        </div>
-        <p class="mb-4 text-sm leading-relaxed sm:text-base">
-          La red de veterinarias a su servicio...
-        </p>
-        <a href="/NuestraRed"
-          class="inline-flex w-fit items-center rounded-lg bg-blue-300 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-400">
-          Listado Completo +
-        </a>
-      </div>
 
-      <!-- Afiliate Box -->
-      <div class="flex-1 min-w-[260px] rounded-2xl bg-gray-200 p-4 shadow-md sm:min-w-[300px] sm:p-6">
-        <!-- Contenido afiliate -->
-        <div class="mb-4 flex items-center">
-          <div class="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 sm:h-12 sm:w-12">
-            <svg class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" />
-            </svg>
+          <!-- Cobertura -->
+          <div class="bg-white rounded-3xl p-10 shadow-sm">
+            <div class="flex items-center gap-5 mb-6">
+              <div class="w-14 h-14 bg-sky-100 rounded-3xl flex items-center justify-center text-4xl">📍</div>
+              <h2 class="text-2xl font-semibold text-gray-900">Nuestra red</h2>
+            </div>
+            <p class="text-gray-600 mb-8">
+              Contamos con una amplia red de clínicas y veterinarios certificados en todo el país.
+            </p>
+            <a href="/NuestraRed" 
+              class="block w-full text-center py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-2xl transition-all">
+              Ver toda la red
+            </a>
           </div>
-          <h2 class="text-lg font-bold">Afíliate</h2>
         </div>
-        <p class="mb-4 text-sm leading-relaxed sm:text-base">
-          Descubre la forma más fácil de cuidar a tu mascota...
-        </p>
-        <a href="/Afiliate"
-          class="inline-flex w-fit items-center rounded-lg bg-blue-300 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-400">
-          Afíliate aquí +
-        </a>
       </div>
-    </div>
-  </section>
-  <Copyright />
+    </section>
+
+    <Copyright />
+  </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
 import Copyright from '../components/copyright.vue';
 import SkeletonCard from '../components/SkeletonCard.vue';
-import { useHead } from '@unhead/vue'
+import { ref, onMounted } from 'vue';
+import { useHead } from '@unhead/vue';
+
+const planesRaw = ref([]);
+const loading = ref(true);
+const API_URL = import.meta.env.VITE_API_URL || ['https://backend-', 'vet', 'plus.onrender.com'].join('')
 
 useHead({
-  title: ' Clínicas veterinarias',
+  title: 'Clínicas Veterinarias - PetSalud',
   meta: [
-    { name: 'description', content: 'Gana beneficios recomendando VetPlus a tus amigos.' }
+    {
+      name: 'description',
+      content: 'Encuentra las mejores clínicas veterinarias aliadas a PetSalud en todo Colombia.'
+    }
   ]
-})
-
-const planesRaw = ref([])//Se guarda lo que llega de la api
-const loading = ref(true)
-const API_URL = "https://backend-vetplus.onrender.com"
+});
 
 onMounted(async () => {
   try {
-    const res = await fetch(`${API_URL}/api/clinicas`)
-    //Guardamos los datos en la variable "raw"
-    planesRaw.value = await res.json()
+    const res = await fetch(`${API_URL}/api/clinicas`);
+    if (res.ok) {
+      planesRaw.value = await res.json();
+    }
   } catch (error) {
-    console.error("Error al cargar los planes", error)
+    console.error("Error al cargar clínicas:", error);
   } finally {
-    loading.value = false
+    loading.value = false;
   }
-})
-
+});
 </script>

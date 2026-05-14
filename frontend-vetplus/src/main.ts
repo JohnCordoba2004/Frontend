@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 // IMPORTANTE: Usa createHead de @unhead/vue
 import { createHead } from "@unhead/vue/client";
+import { createPinia } from "pinia";
 import "./style.css";
 import App from "./App.vue";
 import { router } from "./router";
@@ -9,6 +10,8 @@ const app = createApp(App);
 
 // Crea la instancia de head usando createHead()
 const head = createHead();
+
+const pinia = createPinia();
 
 router.afterEach((to) => {
   const desc = to.meta.description as string;
@@ -19,7 +22,7 @@ router.afterEach((to) => {
       ?.setAttribute("content", desc);
   }
 });
-
+app.use(pinia);
 app.use(head); // Ahora sí lo reconocerá como un Plugin de Vue
 app.use(router);
 app.mount("#app");
