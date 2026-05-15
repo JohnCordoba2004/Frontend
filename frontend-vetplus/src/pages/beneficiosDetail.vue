@@ -54,7 +54,7 @@
                 <a v-if="beneficio.direction && beneficio.direction.length"
                   :href="`https://www.google.com/maps/search/?api=1&query=${beneficio.direction}`" target="_blank"
                   class="text-gray-700 hover:text-sky-600 hover:underline transition-colors">
-                  {{ beneficio.direction }}
+                  {{ beneficio.direction[0] }}
                 </a>
                 <p v-else class="text-gray-400 italic">Dirección no disponible</p>
               </div>

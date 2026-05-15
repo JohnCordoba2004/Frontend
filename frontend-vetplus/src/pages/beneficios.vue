@@ -110,7 +110,7 @@ useHead({
 
 // Función para manejar error de imagen
 const manejarErrorImg = (item) => {
-  item.img = 'https://res.cloudinary.com/diro0cqpe/image/upload/v1773625013/RUNNING_PAWS_LOGO2_rem3yf.png'
+  item.img = 'https://res.cloudinary.com/diro0cqpe/image/upload/v1778818725/5E5A7522-scaled_efabdh.jpg'
 }
 
 onMounted(async () => {

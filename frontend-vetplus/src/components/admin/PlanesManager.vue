@@ -301,7 +301,7 @@ async function guardarPlan() {
     feedbackTipo.value = "success";
     feedback.value = editandoId.value ? "Plan actualizado correctamente" : "Plan creado correctamente";
 
-    prepararNuevo();
+    limpiarFormulario();
     await cargarPlanes();
   } catch (error) {
     feedbackTipo.value = "error";

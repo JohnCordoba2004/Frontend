@@ -13,9 +13,12 @@
       </button>
     </div>
 
-    <p v-if="feedback" :class="feedbackClase" class="mb-6 rounded-2xl px-6 py-4 text-sm font-medium">
+    <!-- Mensaje de feedback -->
+    <div v-if="feedback"
+      :class="feedbackTipo === 'success' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' : 'bg-red-100 text-red-700 border-red-200'"
+      class="mb-8 rounded-2xl border px-6 py-4 text-sm font-medium">
       {{ feedback }}
-    </p>
+    </div>
 
     <div class="grid gap-10 xl:grid-cols-[1.2fr_0.8fr]">
 
@@ -173,9 +176,9 @@ const form = reactive({
   imgFull: ''
 });
 
-const feedbackClase = computed(() =>
+/* const feedbackClase = computed(() =>
   feedbackTipo.value === 'error' ? 'bg-red-100 text-red-700' : 'bg-emerald-100 text-emerald-700'
-);
+);*/
 
 const limpiarFormulario = () => {
   Object.assign(form, {
@@ -196,15 +199,32 @@ function prepararNuevo() {
   feedback.value = "";
 }
 
+const separarValores = (valor) =>
+  String(valor || "")
+    .split(/,|\n|•|;|\s+-\s+/)
+    .map(s => s.trim())
+    .filter(Boolean);
+
+const limpiarNumero = (valor) => String(valor || "").replace(/\D/g, "");
+
+const separarTelefonos = (valor) =>
+  separarValores(valor)
+    .map(limpiarNumero)
+    .filter(Boolean);
+
+const separarCelularesValidos = (valor) =>
+  separarTelefonos(valor)
+    .filter(numero => /^3\d{9}$/.test(numero) || /^6\d{9}$/.test(numero));
+
 function llenarFormulario(benefit) {
-  form.name = benefit.name ?? '';
-  form.direction = benefit.direction ?? '';
-  form.telefono = benefit.telefono ?? '';
-  form.web = benefit.web ?? '';
-  form.desc = benefit.desc ?? '';
-  form.contact = benefit.contact ?? '';
-  form.img = benefit.img ?? '';
-  form.imgFull = benefit.imgFull ?? '';
+  form.name = benefit.name || '';
+  form.direction = benefit.direction?.join(', ') || '';
+  form.telefono = benefit.telefono?.join(', ' || '');
+  form.web = benefit.web?.join(', ') || '';
+  form.desc = benefit.desc?.join("\n") || "";
+  form.contact = benefit.contact || '';
+  form.img = benefit.img || '';
+  form.imgFull = benefit.imgFull || '';
   editandoId.value = benefit._id;
 }
 
@@ -235,9 +255,9 @@ async function guardarBeneficio() {
   try {
     const payload = {
       name: form.name.trim(),
-      direction: form.direction,
-      telefono: form.telefono,
-      web: form.web,
+      direction: separarValores(form.direction),
+      telefono: separarCelularesValidos(form.telefono),
+      web: separarValores(form.web),
       desc: form.desc,
       contact: form.contact,
       img: form.img,
@@ -269,7 +289,7 @@ async function guardarBeneficio() {
     feedbackTipo.value = "success";
     feedback.value = editandoId.value ? "Beneficio actualizado correctamente" : "Beneficio creado correctamente";
 
-    prepararNuevo();
+    limpiarFormulario();
     await cargarBeneficios();
   } catch (error) {
     feedbackTipo.value = "error";
