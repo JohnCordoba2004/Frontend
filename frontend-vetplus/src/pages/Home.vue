@@ -4,7 +4,9 @@ import HeroSection from '../components/HeroSection.vue';
 import MedicinaPreventiva from '../components/MedicinaPreventiva.vue';
 import PlanesPrincipales from '../components/PlanesPrincipales.vue';
 import PetSalud from '../components/PetSalud.vue';
-import Copyright from '../components/copyright.vue';
+// import Copyright from '../components/copyright.vue';
+import footerInfo from '../components/footerInfo.vue'
+
 import { useHead } from '@unhead/vue';
 useHead({
   title: 'Medicina Prepagada Veterinaria',
@@ -30,6 +32,7 @@ useHead({
     <!-- Interes -->
     <DeInteres />
     <!-- Copy -->
-    <Copyright />
+    <!-- <Copyright /> -->
+    <footerInfo />
   </div>
 </template>
