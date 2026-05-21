@@ -142,7 +142,6 @@ import footerInfo from '../components/footerInfo.vue'
 import { RouterLink } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import { useHead } from '@unhead/vue'
-import { RouterLink } from 'vue-router'
 
 const beneficios = ref([])
 const loading = ref(true)
