@@ -45,11 +45,11 @@
 
           <!-- CTA -->
           <div class="pt-2">
-            <router-link to="/Afiliate"
+            <RouterLink to="/Afiliate"
               class="inline-flex items-center gap-2 px-8 py-4 bg-sky-600 hover:bg-sky-700 active:scale-95 text-white font-bold text-base rounded-2xl shadow-lg shadow-sky-500/25 transition-all duration-200 group">
               Cotizar mi plan
               <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </router-link>
+            </RouterLink>
           </div>
 
         </div>
@@ -94,7 +94,6 @@
     <!-- Secciones hijas -->
     <PlanesPrincipales tipoFiltro="cat" />
     <MedicinaPreventiva />
-    <!-- <Copyright /> -->
     <footerInfo />
 
   </div>
@@ -104,7 +103,6 @@
 import { RouterLink } from 'vue-router'
 import PlanesPrincipales from '../components/PlanesPrincipales.vue'
 import MedicinaPreventiva from '../components/MedicinaPreventiva.vue'
-import Copyright from '../components/copyright.vue'
 import footerInfo from '../components/footerInfo.vue'
 
 import { useHead } from '@unhead/vue'

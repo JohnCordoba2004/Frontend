@@ -78,15 +78,15 @@
 
           <!-- CTA -->
           <div class="flex flex-col sm:flex-row gap-3 pt-2">
-            <a href="/PetSalud"
+            <RouterLink to="/PetSalud"
               class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-sky-600 hover:bg-sky-700 active:scale-95 text-white text-sm font-semibold rounded-2xl transition-all duration-200 shadow-sm shadow-sky-200 group">
               Conocer más sobre PetSalud
               <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </a>
-            <a href="/Planes"
+            </RouterLink>
+            <RouterLink to="/Planes"
               class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-sm font-semibold rounded-2xl transition-all duration-200">
               Ver planes
-            </a>
+            </RouterLink>
           </div>
 
         </div>
@@ -96,6 +96,8 @@
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router';
+
 const features = [
   {
     icono: '🗺️',

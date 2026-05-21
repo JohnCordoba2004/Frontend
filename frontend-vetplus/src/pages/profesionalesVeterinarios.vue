@@ -81,10 +81,10 @@
               <div class="min-w-0">
                 <p class="text-xs text-slate-400 mb-0.5">Dirección</p>
                 <a v-if="profesional.direction && profesional.direction.length"
-                  :href="`https://www.google.com/maps/search/?api=1&query=${profesional.direction}`" target="_blank"
-                  rel="noopener noreferrer"
+                  :href="`https://www.google.com/maps/search/?api=1&query=${profesional.direction.join(', ')}`"
+                  target="_blank" rel="noopener noreferrer"
                   class="text-sm text-slate-700 hover:text-sky-600 transition-colors duration-200 line-clamp-2">
-                  {{ profesional.direction.join('') }}
+                  {{ profesional.direction.join(', ') }}
                 </a>
                 <p v-else class="text-sm text-slate-400 italic">No disponible</p>
               </div>
@@ -138,11 +138,11 @@
                   Descubre lo fácil que es proteger la salud de tu mascota con PetSalud.
                 </p>
               </div>
-              <a href="/Afiliate"
+              <RouterLink to="/Afiliate"
                 class="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-sky-500 hover:bg-sky-400 active:scale-95 text-white text-sm font-bold rounded-2xl transition-all duration-200 shadow-lg shadow-sky-500/20 group">
                 Afíliate ahora
                 <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-              </a>
+              </RouterLink>
             </div>
           </div>
 
@@ -154,11 +154,11 @@
                 Contamos con una amplia red de clínicas y veterinarios certificados en todo el país.
               </p>
             </div>
-            <a href="/NuestraRed"
+            <RouterLink to="/NuestraRed"
               class="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white text-sm font-bold rounded-2xl transition-all duration-200 group">
               Ver toda la red
               <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </a>
+            </RouterLink>
           </div>
 
         </div>
@@ -180,15 +180,17 @@ import { useHead } from '@unhead/vue'
 
 const planesProfesionales = ref([])
 const loading = ref(true)
-const API_URL = import.meta.env.VITE_API_URL || ['https://backend-', 'vet', 'plus.onrender.com'].join('')
+const API_URL = import.meta.env.VITE_API_URL || 'https://backend-vetplus.onrender.com'
 
 useHead({
   title: 'Profesionales Adscritos 👨‍⚕️ | PetSalud Colombia',
   meta: [
     { name: 'description', content: 'Conoce a nuestros veterinarios y especialistas adscritos a PetSalud. Profesionales certificados para cuidar a tu mascota.' },
+    { name: 'robots', content: 'index, follow' },
     { property: 'og:title', content: 'PetSalud | Profesionales Veterinarios Adscritos' },
     { property: 'og:description', content: 'Especialistas veterinarios certificados aliados a PetSalud en todo Colombia.' },
     { property: 'og:type', content: 'website' },
+    { property: 'og:image', content: 'https://res.cloudinary.com/diro0cqpe/image/upload/v1776190583/a-veterinarian-with-fair-skin-and-short-brown-hair_14.04.2026_yqmz5z.webp' },
   ],
 })
 

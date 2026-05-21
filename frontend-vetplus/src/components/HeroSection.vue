@@ -44,15 +44,15 @@
 
           <!-- CTAs -->
           <div class="flex flex-col sm:flex-row gap-3">
-            <a href="/Planes"
+            <RouterLink to="/Planes"
               class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-sky-500 hover:bg-sky-400 active:scale-95 text-white text-sm font-bold rounded-2xl transition-all duration-200 shadow-lg shadow-sky-500/25 group">
               Ver nuestros planes
               <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </a>
-            <a href="/Afiliate"
+            </RouterLink>
+            <RouterLink to="/Afiliate"
               class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 hover:border-white/20 text-white text-sm font-bold rounded-2xl transition-all duration-200 backdrop-blur-sm">
               Afiliarme ahora
-            </a>
+            </RouterLink>
           </div>
 
           <!-- Indicadores de confianza -->
@@ -124,6 +124,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
+import { RouterLink } from 'vue-router';
 
 onMounted(() => {
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })

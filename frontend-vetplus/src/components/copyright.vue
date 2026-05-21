@@ -52,48 +52,48 @@
       <!-- Columna 3: Legal + botón arriba -->
       <div class="flex flex-col gap-4 items-center">
         <nav aria-label="Compromiso" class="flex flex-col gap-2">
-          <a href="/Compromiso"
+          <RouterLink to="/Compromiso"
             class="text-xs text-zinc-400 hover:text-zinc-200 transition-colors duration-200 pl-4 relative group">
             <span
               class="absolute left-0 top-1/2 -translate-y-1/2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs">
               <i class="fa-solid fa-arrow-right"></i>
             </span>
             Sobre Nosotros
-          </a>
-          <a href="/ProfesionalesVet"
+          </RouterLink>
+          <RouterLink to="/ProfesionalesVet"
             class="text-xs text-zinc-400 hover:text-zinc-200 transition-colors duration-200 pl-4 relative group">
             <span
               class="absolute left-0 top-1/2 -translate-y-1/2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs">
               <i class="fa-solid fa-arrow-right"></i>
             </span>
             Medicos veterinarios
-          </a>
-          <a href="/Planes"
+          </RouterLink>
+          <RouterLink to="/Planes"
             class="text-xs text-zinc-400 hover:text-zinc-200 transition-colors duration-200 pl-4 relative group">
             <span
               class="absolute left-0 top-1/2 -translate-y-1/2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs">
               <i class="fa-solid fa-arrow-right"></i>
             </span>
             Planes
-          </a>
-          <a href="/Afiliate"
+          </RouterLink>
+          <RouterLink to="/Afiliate"
             class="text-xs text-zinc-400 hover:text-zinc-200 transition-colors duration-200 pl-4 relative group">
             <span
               class="absolute left-0 top-1/2 -translate-y-1/2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs">
               <i class="fa-solid fa-arrow-right"></i>
             </span>
             Afiliate
-          </a>
+          </RouterLink>
         </nav>
 
-        <a href="#top" aria-label="Volver al inicio de la página"
+        <RouterLink to="#top" aria-label="Volver al inicio de la página"
           class="group inline-flex items-center gap-2 px-4 py-2 rounded-full text-green-400 text-xs font-medium border border-green-400/25 bg-green-400/10 hover:bg-green-400/20 hover:border-green-400/50 hover:-translate-y-0.5 transition-all duration-200">
           <span aria-hidden="true"
             class="text-base leading-none group-hover:-translate-y-0.5 transition-transform duration-200">
             <i class="fa-solid fa-arrow-up"></i>
           </span>
           Volver arriba
-        </a>
+        </RouterLink>
       </div>
 
     </div>
@@ -113,5 +113,6 @@
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router';
 const currentYear = new Date().getFullYear()
 </script>

@@ -130,13 +130,13 @@
         Conviértete en afiliado hoy y comienza a disfrutar de nuestros beneficios. Luego puedes participar en el Plan
         Referidos.
       </p>
-      <a href="/Afiliate"
+      <RouterLink to="/Afiliate"
         class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-sky-600 font-semibold rounded-2xl hover:bg-slate-50 transition-all duration-200 shadow-lg group">
         Afíliate ahora
         <span class="transition-transform duration-200 group-hover:translate-x-1">
           <i class="fa-solid fa-arrow-right"></i>
         </span>
-      </a>
+      </RouterLink>
     </div>
   </section>
 
@@ -146,6 +146,7 @@
 <script setup>
 import { useSEO } from '../composables/useSEO';
 import footerInfo from '../components/footerInfo.vue';
+import { RouterLink } from 'vue-router';
 
 const { setPageSEO } = useSEO();
 

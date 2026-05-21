@@ -4,11 +4,11 @@
     <div class="w-full px-3 sm:px-4 lg:px-6 py-3 sm:py-4 lg:py-6">
       <div class="mx-auto flex flex-nowrap items-center justify-between gap-4 sm:gap-6 w-full max-w-7xl">
         <!-- Logo -->
-        <a href="/" class="flex items-center">
+        <RouterLink to="/" class="flex items-center">
           <span class="text-2xl sm:text-3xl font-black tracking-tight text-sky-700">
             Pet<span class="text-gray-900">Salud</span>
           </span>
-        </a>
+        </RouterLink>
 
         <!-- Menú lateral / Navbar -->
         <div id="collapseMenu" :class="[
@@ -36,21 +36,23 @@
                    max-lg:bg-white max-lg:p-4 sm:max-lg:p-6 max-lg:shadow-md max-lg:overflow-auto max-lg:space-y-2 sm:max-lg:space-y-3">
             <!-- Logo dentro del menú móvil -->
             <li class="mb-4 sm:mb-6 hidden max-lg:block">
-              <a href="/">
+              <RouterLink to="/">
                 <span class="text-2xl font-black tracking-tight text-sky-700">
                   Pet<span class="text-gray-900">Salud</span>
                 </span>
-              </a>
+              </RouterLink>
             </li>
 
             <!-- Links principales -->
             <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-2 sm:max-lg:py-3">
-              <a href="/"
-                class="block text-sm sm:text-[15px] font-semibold text-blue-600 hover:text-blue-700">Inicio</a>
+              <RouterLink to="/" class="block text-sm sm:text-[15px] font-semibold text-blue-600 hover:text-blue-700">
+                Inicio
+              </RouterLink>
             </li>
             <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-2 sm:max-lg:py-3">
-              <a href="/PetSalud"
-                class="block text-sm sm:text-[15px] font-semibold text-gray-600 hover:text-blue-700">PetSalud</a>
+              <RouterLink to="/PetSalud"
+                class="block text-sm sm:text-[15px] font-semibold text-gray-600 hover:text-blue-700">PetSalud
+              </RouterLink>
             </li>
 
             <!-- Dropdown: Planes -->
@@ -77,19 +79,19 @@
                 isPlanesOpen && 'max-lg:max-h-[300px] max-lg:opacity-100 max-lg:pb-2 max-lg:pt-2'
               ]">
                 <li class="border-b border-gray-300 py-2">
-                  <a href="/PlanesPerro" @click="isOpen = false"
-                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Perros</a>
+                  <RouterLink to="/PlanesPerro" @click="isOpen = false"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Perros</RouterLink>
                 </li>
                 <li class=" border-gray-300 py-2">
-                  <a href="/PlanesGato" @click="isOpen = false"
-                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Gatos</a>
+                  <RouterLink to="/PlanesGato" @click="isOpen = false"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Gatos</RouterLink>
                 </li>
               </ul>
             </li>
 
             <!-- Dropdown: Nuestra Red -->
             <li class="relative group max-lg:border-b max-lg:border-gray-300 max-lg:py-3">
-              <a href="/NuestraRed" @click="isNuestraRedOpen = !isNuestraRedOpen"
+              <RouterLink to="/NuestraRed" @click="isNuestraRedOpen = !isNuestraRedOpen"
                 class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">
                 <span class="inline-flex items-center">
                   Nuestra Red
@@ -100,7 +102,7 @@
                       d="M12 16a1 1 0 0 1-.71-.29l-6-6a1 1 0 0 1 1.42-1.42l5.29 5.3 5.29-5.29a1 1 0 0 1 1.41 1.41l-6 6a1 1 0 0 1-.7.29z" />
                   </svg>
                 </span>
-              </a>
+              </RouterLink>
               <ul :class="[
                 'absolute -left-6 min-w-[250px] bg-white shadow-lg px-6 space-y-3 transition-all duration-500',
                 'lg:top-5 max-lg:top-full max-lg:relative max-lg:left-0 max-lg:min-w-full max-lg:shadow-none max-lg:px-0 max-lg:mt-2',
@@ -111,27 +113,32 @@
                 isNuestraRedOpen && 'max-lg:max-h-[300px] max-lg:opacity-100 max-lg:pb-2 max-lg:pt-2'
               ]">
                 <li class="border-b border-gray-300 py-2">
-                  <a href="/ClinicasVeterinarias" @click="isNuestraRedOpen = false"
-                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Clínicas Veterinarias</a>
+                  <RouterLink to="/ClinicasVeterinarias" @click.prevent="isNuestraRedOpen = false"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Clínicas Veterinarias
+                  </RouterLink>
                 </li>
                 <li class="border-b border-gray-300 py-2">
-                  <a href="/ProfesionalesVet" @click="isNuestraRedOpen = false"
-                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Profesionales adscritos</a>
+                  <RouterLink to="/ProfesionalesVet" @click.prevent="isNuestraRedOpen = false"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Profesionales adscritos
+                  </RouterLink>
                 </li>
                 <li class="border-gray-300 py-2">
-                  <a href="/Otros" @click="isNuestraRedOpen = false"
-                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Otros</a>
+                  <RouterLink to="/Otros" @click.prevent="isNuestraRedOpen = false"
+                    class="block text-[15px] font-medium text-gray-600 hover:text-blue-700">Otros</RouterLink>
                 </li>
               </ul>
             </li>
 
             <!-- Otros enlaces -->
             <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3">
-              <a href="/Beneficios"
-                class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">Beneficios</a>
+              <RouterLink to="/Beneficios" class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">
+                Beneficios
+              </RouterLink>
             </li>
             <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3">
-              <a href="/Afiliate" class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">Afíliate</a>
+              <RouterLink to="/Afiliate" class="block text-[15px] font-semibold text-gray-600 hover:text-blue-700">
+                Afíliate
+              </RouterLink>
             </li>
 
             <!-- Teléfono dentro del menú móvil -->
@@ -171,6 +178,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const isOpen = ref(false)
 const isPlanesOpen = ref(false)

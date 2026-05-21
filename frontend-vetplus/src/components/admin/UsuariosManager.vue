@@ -11,9 +11,9 @@ const password = ref("");
 const role = ref("user");
 
 // 📋 LISTA DE USUARIOS
-const usuarios = ref < any[] > ([]);
+const usuarios = ref<any[]>([]);
 
-const API_URL = import.meta.env.VITE_API_URL || ['https://backend-', 'vet', 'plus.onrender.com'].join('')
+const API_URL = import.meta.env.VITE_API_URL || 'https://backend-vetplus.onrender.com'
 
 // 🔄 CARGAR USUARIOS
 const cargarUsuarios = async () => {
@@ -95,7 +95,6 @@ const eliminarUsuario = async (id: string) => {
 
 // 🚀 AL CARGAR
 onMounted(() => {
-  console.log('TOKEN AL MONTAR:', userStore.sesion.token)
   cargarUsuarios();
 });
 </script>

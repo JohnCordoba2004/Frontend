@@ -45,13 +45,13 @@
 
           <!-- CTA -->
           <div class="pt-2">
-            <router-link to="/Afiliate"
+            <RouterLink to="/Afiliate"
               class="inline-flex items-center gap-2 px-8 py-4 bg-sky-600 hover:bg-sky-800 active:scale-95 text-white font-bold text-base rounded-2xl shadow-lg shadow-sky-500/20  transition-all duration-200 group">
               Cotizar mi plan
               <span class="transition-transform duration-200 group-hover:translate-x-1">
                 <i class="fa-solid fa-angle-right"></i>
               </span>
-            </router-link>
+            </RouterLink>
           </div>
         </div>
 

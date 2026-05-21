@@ -14,13 +14,13 @@
             Una eventualidad médica puede llegar en cualquier momento. PetSalud es sin lugar a dudas la mejor opción en
             medicina prepagada veterinaria.
           </p>
-          <a href="/Afiliate"
+          <RouterLink href="/Afiliate"
             class="inline-flex items-center gap-2 px-6 py-3.5 bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold rounded-2xl transition-all duration-200 shadow-md shadow-sky-200 group">
             Afíliate ahora
             <span class="transition-transform duration-200 group-hover:translate-x-1">
               <i class="fa-solid fa-arrow-right"></i>
             </span>
-          </a>
+          </RouterLink>
         </div>
 
         <!-- Imagen derecha -->
@@ -72,20 +72,20 @@
         Descubre nuestros planes flexibles y diseñados para tu presupuesto. Tu mascota merece lo mejor.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/Afiliate"
+        <RouterLink to="/Afiliate"
           class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-sky-600 font-semibold rounded-2xl hover:bg-slate-50 transition-all duration-200 shadow-lg group">
           Explorar planes
           <span class="transition-transform duration-200 group-hover:translate-x-1">
             <i class="fa-solid fa-arrow-right"></i>
           </span>
-        </a>
-        <a href="/NuestraRed"
+        </RouterLink>
+        <RouterLink to="/NuestraRed"
           class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:bg-opacity-10 transition-all duration-200 group">
           Ver red de veterinarias
           <span class="transition-transform duration-200 group-hover:translate-x-1">
             <i class="fa-solid fa-arrow-right"></i>
           </span>
-        </a>
+        </RouterLink>
       </div>
     </div>
   </section>
@@ -98,6 +98,7 @@
 import { useSEO } from '../composables/useSEO';
 import footerInfo from '../components/footerInfo.vue';
 import Copyright from '../components/copyright.vue';
+import { RouterLink } from 'vue-router';
 
 const { setPageSEO } = useSEO();
 

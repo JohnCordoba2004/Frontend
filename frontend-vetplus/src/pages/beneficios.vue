@@ -89,7 +89,7 @@
               </span>
               <div>
                 <p class="text-xs text-slate-400 mb-0.5">Teléfono</p>
-                <p class="text-sm text-slate-700">{{ benefit.telefono.join('') }}</p>
+                <p class="text-sm text-slate-700">{{ benefit.telefono.join(', ') }}</p>
               </div>
             </div>
 
@@ -103,14 +103,14 @@
                 <p class="text-xs text-slate-400 mb-0.5">Sitio web</p>
                 <a :href="benefit.web" target="_blank" rel="noopener noreferrer"
                   class="text-sm text-sky-600 hover:text-sky-700 hover:underline font-medium break-all line-clamp-1 transition-colors duration-200">
-                  {{ benefit.web.join('') }}
+                  {{ benefit.web.join(', ') }}
                 </a>
               </div>
             </div>
 
             <!-- Descripción -->
             <p class="text-slate-500 text-sm leading-relaxed line-clamp-3 flex-1">
-              {{ benefit.desc.join('') }}
+              {{ benefit.desc.join(', ') }}
             </p>
 
             <!-- Contacto -->
@@ -134,20 +134,19 @@
     </section>
 
     <footerInfo />
-    <!-- <copyright /> -->
   </div>
 </template>
 
 <script setup>
-// import copyright from '../components/copyright.vue'
 import footerInfo from '../components/footerInfo.vue'
 import { RouterLink } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import { useHead } from '@unhead/vue'
+import { RouterLink } from 'vue-router'
 
 const beneficios = ref([])
 const loading = ref(true)
-const API_URL = import.meta.env.VITE_API_URL || ['https://backend-', 'vet', 'plus.onrender.com'].join('')
+const API_URL = import.meta.env.VITE_API_URL || 'https://backend-vetplus.onrender.com'
 
 useHead({
   title: 'Beneficios para Afiliados 🎁 | PetSalud Colombia',

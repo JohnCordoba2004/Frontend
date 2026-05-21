@@ -92,11 +92,11 @@
               <span class="text-2xl font-normal text-slate-400">/ mes</span>
             </p>
             <p v-if="plan.descPrice" class="text-sky-600 text-sm font-medium mt-1">{{ plan.descPrice }}</p>
-            <a href="/Afiliate"
+            <RouterLink to="/Afiliate"
               class="inline-flex items-center justify-center gap-2 self-center mt-4 px-8 py-4 bg-sky-600 hover:bg-sky-700 active:scale-95 text-white font-bold rounded-2xl transition-all duration-200 shadow-md shadow-sky-500/20 group">
               Afiliarme a este plan
               <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </a>
+            </RouterLink>
           </div>
 
           <!-- Medicina Preventiva -->
@@ -123,11 +123,11 @@
                   Descubre lo fácil que es proteger la salud de tu mascota con PetSalud.
                 </p>
               </div>
-              <a href="/Afiliate"
+              <RouterLink to="/Afiliate"
                 class="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-sky-500 hover:bg-sky-400 active:scale-95 text-white text-sm font-bold rounded-2xl transition-all duration-200 shadow-lg shadow-sky-500/20 group">
                 Afíliate ahora
                 <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-              </a>
+              </RouterLink>
             </div>
           </div>
 
@@ -139,11 +139,13 @@
                 Contamos con una amplia red de clínicas y veterinarios certificados en todo el país.
               </p>
             </div>
-            <a href="/NuestraRed"
+            <RouterLink to="/NuestraRed"
               class="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white text-sm font-bold rounded-2xl transition-all duration-200 group">
               Ver clínicas disponibles
-              <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </a>
+              <span class="transition-transform duration-200 group-hover:translate-x-1">
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </RouterLink>
           </div>
 
         </div>
@@ -162,6 +164,7 @@ import FooterInfo from '../components/footerInfo.vue';
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useHead } from '@unhead/vue'
+import { RouterLink } from 'vue-router';
 
 const route = useRoute()
 const plan = ref(null)

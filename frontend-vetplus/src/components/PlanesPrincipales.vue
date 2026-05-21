@@ -87,6 +87,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import SkeletonCard from './SkeletonCard.vue';
+import { RouterLink } from 'vue-router';
 
 const props = defineProps({
   tipoFiltro: {

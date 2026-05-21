@@ -243,7 +243,7 @@ const itemsPreventiva = [
         </div>
 
         <!-- Beneficios -->
-        <ul class="px-5 space-y-3 text-sm mt-6 sm:px-6 md:min-h-[240px] lg:min-h-[380px]">
+        <ul class="px-5 space-y-3 text-sm mt-6 sm:px-6">
           <li v-for="(beneficio, i) in obtenerBeneficiosPorPlan(plan)" :key="i"
             class="flex items-start gap-3 text-slate-600">
             <span :class="mapsColorPaws[plan.toUpperCase()]" class="mt-0.5 shrink-0">
@@ -254,29 +254,22 @@ const itemsPreventiva = [
         </ul>
 
         <!-- Cobertura Preventiva -->
-        <div class="mt-8 border-t border-slate-100 bg-slate-50 p-4 sm:min-h-[475px] sm:p-6">
+        <div class="mt-8 border-t border-slate-100 bg-slate-50 p-4 sm:p-6">
           <p class="uppercase text-sm font-bold mb-4" :class="mapsColorPaws[plan.toUpperCase()]">
             Cobertura Medicina Preventiva
           </p>
 
-          <table class="w-full table-fixed text-xs border-spacing-x-1 sm:border-spacing-x-0">
-            <colgroup>
-              <col class="w-[58%]">
-              <col class="w-[21%]">
-              <col class="w-[21%]">
-            </colgroup>
+          <table class="w-full text-xs border-spacing-x-1 sm:border-spacing-x-0">
             <thead>
               <tr class="border-b">
-                <th class="text-left py-2 pr-3 font-bold text-base sm:text-lg" :class="mapsColorPaws[plan.toUpperCase()]">
-                  Servicio
-                </th>
+                <th class="text-left py-2 font-bold text-lg" :class="mapsColorPaws[plan.toUpperCase()]">Servicio</th>
 
-                <th class="text-center py-2 px-1 text-xs sm:px-0 sm:text-base"
+                <th class="text-center py-2 px-1 sm:px-0 text-[10px] sm:text-lg"
                   :class="mapsColorPaws[plan.toUpperCase()]">
                   Premium
                 </th>
 
-                <th class="text-center py-2 px-1 text-xs sm:px-0 sm:text-base"
+                <th class="text-center py-2 px-1 sm:px-0 text-[10px] sm:text-lg"
                   :class="mapsColorPaws[plan.toUpperCase()]">
                   Basico
                 </th>
@@ -288,7 +281,7 @@ const itemsPreventiva = [
               <tr v-for="item in itemsPreventiva" :key="item"
                 :class="{ 'opacity-0 select-none pointer-events-none': item === 'Odontología preventiva' && plan.toUpperCase() === 'BASICO' }">
 
-                <td class="py-4 pr-3 leading-snug">{{ item }}</td>
+                <td class="py-4 pr-6">{{ item }}</td>
                 <!--Si no es silver-->
                 <!--Full premium, todos check-->
                 <td class="text-center">

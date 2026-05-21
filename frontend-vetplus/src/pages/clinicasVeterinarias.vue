@@ -138,28 +138,31 @@
                   Descubre lo fácil que es proteger la salud de tu mascota con PetSalud.
                 </p>
               </div>
-              <a href="/Afiliate"
+              <RouterLink to="/Afiliate"
                 class="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-sky-500 hover:bg-sky-400 active:scale-95 text-white text-sm font-bold rounded-2xl transition-all duration-200 shadow-lg shadow-sky-500/20 group">
                 Afíliate ahora
                 <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-              </a>
+              </RouterLink>
             </div>
           </div>
 
           <!-- Nuestra red -->
           <div class="bg-white border border-slate-100 rounded-3xl p-8 flex flex-col gap-5">
-            <div class="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-2xl">📍</div>
+            <div class="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-2xl"><i
+                class="fa-solid fa-map-pin" style="color: rgb(243, 49, 49);"></i></div>
             <div>
               <h2 class="text-xl font-bold text-slate-900 mb-2">Nuestra red completa</h2>
               <p class="text-slate-500 text-sm leading-relaxed">
                 Contamos con una amplia red de clínicas y veterinarios certificados en todo el país.
               </p>
             </div>
-            <a href="/NuestraRed"
+            <RouterLink href="/NuestraRed"
               class="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white text-sm font-bold rounded-2xl transition-all duration-200 group">
               Ver toda la red
-              <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </a>
+              <span class="transition-transform duration-200 group-hover:translate-x-1">
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </RouterLink>
           </div>
 
         </div>
@@ -177,10 +180,11 @@
 import footerInfo from '../components/footerInfo.vue'
 import { ref, onMounted } from 'vue'
 import { useHead } from '@unhead/vue'
+import { RouterLink } from 'vue-router'
 
 const planesRaw = ref([])
 const loading = ref(true)
-const API_URL = import.meta.env.VITE_API_URL || ['https://backend-', 'vet', 'plus.onrender.com'].join('')
+const API_URL = import.meta.env.VITE_API_URL || 'https://backend-vetplus.onrender.com'
 
 useHead({
   title: 'Clínicas Veterinarias 🏥 | PetSalud Colombia',

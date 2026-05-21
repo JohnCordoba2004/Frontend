@@ -75,11 +75,11 @@
               <h3 class="text-lg font-bold text-slate-900">{{ card.titulo }}</h3>
             </div>
             <p class="text-slate-500 text-sm leading-relaxed">{{ card.desc }}</p>
-            <a :href="card.link"
+            <RouterLink :to="card.link"
               class="inline-flex items-center gap-1.5 text-sky-600 hover:text-sky-700 text-sm font-semibold transition-all duration-200 group/link">
               {{ card.cta }}
               <span class="transition-transform duration-200 group-hover/link:translate-x-1">→</span>
-            </a>
+            </RouterLink>
           </div>
 
         </div>
@@ -94,6 +94,7 @@
 <script setup>
 import footerInfo from '../components/footerInfo.vue'
 import Copyright from '../components/copyright.vue'
+import { RouterLink } from 'vue-router'
 
 const stats = [
   { icono: '🐾', valor: '+10K', label: 'Mascotas protegidas' },

@@ -14,8 +14,7 @@
 
           <!-- Redes sociales -->
           <div class="flex gap-5 mt-8">
-            <a href="#" aria-label="Facebook"
-              class="text-2xl hover:text-white transition-colors">
+            <a href="#" aria-label="Facebook" class="text-2xl hover:text-white transition-colors">
               <i class="fa-brands fa-facebook"></i>
             </a>
             <a href="#" aria-label="X" class="text-2xl hover:text-white transition-colors">
@@ -55,12 +54,26 @@
         <div class="lg:col-span-4">
           <h3 class="text-white font-semibold text-lg mb-5">Empresa</h3>
           <ul class="grid grid-cols-2 gap-y-3 text-sm text-gray-400">
-            <li><a href="/Compromiso" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
-            <li><a href="/ProfesionalesVet" class="hover:text-white transition-colors">Médicos Veterinarios</a></li>
-            <li><a href="/Planes" class="hover:text-white transition-colors">Planes</a></li>
-            <li><a href="/Afiliate" class="hover:text-white transition-colors">Afíliate</a></li>
-            <li><a href="/porQuePetSalud" class="hover:text-white transition-colors">¿Por qué PetSalud?</a></li>
-            <li><a href="/emergenciaMascota" class="hover:text-white transition-colors">Urgencias</a></li>
+            <li>
+              <RouterLink to="/Compromiso" class="hover:text-white transition-colors">Sobre Nosotros</RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/ProfesionalesVet" class="hover:text-white transition-colors">Médicos Veterinarios
+              </RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/Planes" class="hover:text-white transition-colors">Planes</RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/Afiliate" class="hover:text-white transition-colors">Afíliate</RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/porQuePetSalud" class="hover:text-white transition-colors">¿Por qué PetSalud?
+              </RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/emergenciaMascota" class="hover:text-white transition-colors">Urgencias</RouterLink>
+            </li>
           </ul>
         </div>
 
@@ -73,3 +86,7 @@
     </div>
   </footer>
 </template>
+
+<script setup>
+import { RouterLink } from 'vue-router';
+</script>

@@ -82,13 +82,13 @@
               (+57) 300 000 0000
             </p>
           </div>
-          <a href="/ClinicasVeterinarias"
+          <RouterLink to="/ClinicasVeterinarias"
             class="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-2xl transition-all duration-200 shadow-md hover:shadow-lg group whitespace-nowrap">
             Ver clinicas veterinarias
             <span class="transition-transform duration-200 group-hover:translate-x-1">
               <i class="fa-solid fa-arrow-right"></i>
             </span>
-          </a>
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -101,13 +101,13 @@
       <p class="text-sky-100 text-lg mb-8 leading-relaxed">
         Afíliate hoy y garantiza que tu mascota esté protegida ante cualquier emergencia.
       </p>
-      <a href="/Afiliate"
+      <RouterLink to="/Afiliate"
         class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-sky-600 font-semibold rounded-2xl hover:bg-slate-50 transition-all duration-200 shadow-lg group">
         Explorar planes
         <span class="transition-transform duration-200 group-hover:translate-x-1">
           <i class="fa-solid fa-arrow-right"></i>
         </span>
-      </a>
+      </RouterLink>
     </div>
   </section>
 
@@ -119,6 +119,7 @@
 import { useSEO } from '../composables/useSEO';
 import footerInfo from '../components/footerInfo.vue';
 import Copyright from '../components/copyright.vue';
+import { RouterLink } from 'vue-router';
 
 const { setPageSEO } = useSEO();
 

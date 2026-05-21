@@ -135,11 +135,11 @@
                   Descubre lo fácil que es proteger la salud de tu mascota con PetSalud.
                 </p>
               </div>
-              <a href="/Afiliate"
+              <RouterLink to="/Afiliate"
                 class="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-sky-500 hover:bg-sky-400 active:scale-95 text-white text-sm font-bold rounded-2xl transition-all duration-200 shadow-lg shadow-sky-500/20 group">
                 Afíliate ahora
                 <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-              </a>
+              </RouterLink>
             </div>
           </div>
 
@@ -151,11 +151,11 @@
                 Contamos con una amplia red de clínicas y profesionales en todo el país.
               </p>
             </div>
-            <a href="/NuestraRed"
+            <RouterLink to="/NuestraRed"
               class="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white text-sm font-bold rounded-2xl transition-all duration-200 group">
               Ver toda la red
               <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </a>
+            </RouterLink>
           </div>
 
         </div>
@@ -172,6 +172,7 @@
 import footerInfo from '../components/footerInfo.vue'
 import { ref, onMounted } from 'vue'
 import { useHead } from '@unhead/vue'
+import { RouterLink } from 'vue-router'
 
 const otrosRaw = ref([])
 const loading = ref(true)

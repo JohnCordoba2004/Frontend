@@ -57,9 +57,9 @@
               <h3 class="text-2xl font-semibold text-gray-900">Dirección</h3>
             </div>
             <p class="text-gray-700 text-lg">
-              <a :href="`https://www.google.com/maps/search/?api=1&query=${profesional.direction}`" target="_blank"
-                class="hover:text-sky-600 hover:underline">
-                {{ profesional.direction.join('') || 'Dirección no disponible' }}
+              <a :href="`https://www.google.com/maps/search/?api=1&query=${profesional.direction.join(', ')}`"
+                target="_blank" class="hover:text-sky-600 hover:underline">
+                {{ profesional.direction.join(', ') || 'Dirección no disponible' }}
               </a>
             </p>
           </div>
@@ -101,10 +101,10 @@
             <p class="text-gray-600 mb-8">
               Descubre lo fácil que es proteger la salud de tu mascota con PetSalud.
             </p>
-            <a href="/Afiliate"
+            <RouterLink to="/Afiliate"
               class="block w-full text-center py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-2xl transition-all">
               Afíliate ahora
-            </a>
+            </RouterLink>
           </div>
 
           <div class="bg-white rounded-3xl p-10 shadow-sm">
@@ -115,10 +115,10 @@
             <p class="text-gray-600 mb-8">
               Contamos con una amplia red de clínicas y veterinarios certificados en todo el país.
             </p>
-            <a href="/NuestraRed"
+            <RouterLink to="/NuestraRed"
               class="block w-full text-center py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-2xl transition-all">
               Ver toda la red
-            </a>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -134,6 +134,7 @@ import SkeletonCard from '../components/SkeletonCard.vue';
 import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@unhead/vue';
+import { RouterLink } from 'vue-router';
 
 const route = useRoute();
 const profesional = ref(null);

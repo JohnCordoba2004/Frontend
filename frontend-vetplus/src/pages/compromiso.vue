@@ -55,11 +55,11 @@
             <p class="text-gray-600 leading-relaxed mb-6">
               La red de veterinarias a su servicio. Contamos con los mejores profesionales en todo el país.
             </p>
-            <a href="/NuestraRed"
+            <RouterLink to="/NuestraRed"
               class="inline-flex items-center gap-2 text-sky-600 font-medium hover:text-sky-700 transition-all">
               Ver listado completo
               <span class="text-xl">→</span>
-            </a>
+            </RouterLink>
           </div>
 
           <!-- Tarjeta Afíliate -->
@@ -72,11 +72,11 @@
             <p class="text-gray-600 leading-relaxed mb-6">
               Descubre la forma más fácil de cuidar a tu mascota con planes diseñados para ti.
             </p>
-            <a href="/Afiliate"
+            <RouterLink to="/Afiliate"
               class="inline-flex items-center gap-2 text-sky-600 font-medium hover:text-sky-700 transition-all">
               Afíliate aquí
               <span class="text-xl">→</span>
-            </a>
+            </RouterLink>
           </div>
 
         </div>
@@ -91,7 +91,7 @@
 
 <script setup>
 import FooterInfo from '../components/footerInfo.vue';
-// import Copyright from '../components/copyright.vue';
+import { RouterLink } from 'vue-router';
 
 const comoInicamos = [
   "En el año 2012 un grupo de profesionales ideó la primera versión de PetSalud, en un esfuerzo por renovar la forma en que nuestros perros y gatos recibían tratamientos médicos de urgencia. Fue así como en el año 2013 recibimos a nuestros afiliados pioneros, con el lanzamiento del primer modelo en planes de medicina prepagada: PetSalud Oro y PetSalud Platino.",

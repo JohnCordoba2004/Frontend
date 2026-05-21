@@ -96,7 +96,7 @@
               <div class="col-span-3 flex justify-center">
                 <span
                   class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">
-                  ✓
+                  <i class="fa-solid fa-arrow-right"></i>
                 </span>
               </div>
 
@@ -134,6 +134,8 @@
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router';
+
 const servicios = [
   { nombre: 'Valoraciones Preventivas', icono: '🩺', basico: true },
   { nombre: 'Vacunación', icono: '💉', basico: true },
