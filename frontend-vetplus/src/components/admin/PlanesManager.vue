@@ -315,12 +315,28 @@ async function eliminarPlan(plan) {
   if (!confirm(`¿Estás seguro de eliminar el plan "${plan.name}"?`)) return;
 
   try {
+    if (!userStore.sesion.token) {
+      throw new Error("No hay sesión activa. Por favor, inicia sesión nuevamente");
+    }
+
     const res = await fetch(`${API_URL}/api/planes/${plan._id}`, {
       method: "DELETE",
-      headers: { Authorization: `Bearer ${userStore.sesion.token}` }
+      headers: { 
+        "Authorization": `Bearer ${userStore.sesion.token}`,
+        "Content-Type": "application/json"
+      }
     });
 
-    if (!res.ok) throw new Error("No se pudo eliminar el plan");
+    if (!res.ok) {
+      let errorMessage = "No se pudo eliminar el plan";
+      try {
+        const errorData = await res.json();
+        errorMessage = errorData.error || errorData.message || errorMessage;
+      } catch (e) {
+        errorMessage = `Error ${res.status}: ${res.statusText || "Error desconocido"}`;
+      }
+      throw new Error(errorMessage);
+    }
 
     feedbackTipo.value = "success";
     feedback.value = "Plan eliminado correctamente";
@@ -329,7 +345,8 @@ async function eliminarPlan(plan) {
     await cargarPlanes();
   } catch (error) {
     feedbackTipo.value = "error";
-    feedback.value = error.message;
+    feedback.value = error.message || "Error al eliminar el plan";
+    console.error("Error eliminando plan:", error);
   }
 }
 

@@ -31,6 +31,13 @@ const razaAString = computed(() =>
   store.datosMascota.esDeRaza ? 'es de raza' : 'no es de raza'
 );
 
+const planBackendMap = {
+  Basico: 'Silver',
+  Avanzado: 'Esmeralda',
+  Premium: 'Diamante',
+  Elite: 'Senior',
+};
+
 const modoActivo = ref('');
 const modoPendiente = ref('');        // ← Necesario
 const cargandoModo = ref(false);      // ← Necesario
@@ -134,6 +141,7 @@ async function seleccionarModo(modo) {
 async function enviarMascota() {
   const payload = {
     ...store.datosMascota,
+    planSeleccionado: planBackendMap[store.datosMascota.planSeleccionado] || store.datosMascota.planSeleccionado,
     esDeRaza: !!store.datosMascota.esDeRaza,
     fechaNacimiento: new Date(store.datosMascota.fechaNacimiento),
     valorMensual: Number(store.datosMascota.valorMensual),

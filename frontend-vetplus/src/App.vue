@@ -2,11 +2,9 @@
 import { useRoute } from 'vue-router';
 import { computed } from 'vue';
 import Header from './components/Header.vue';
-// import Copyright from './components/copyright.vue'; // Asegúrate de que la ruta sea correcta
 import { useHead } from '@unhead/vue'
 
 useHead({
-  // El %s se sustituye por el título de la página actual
   titleTemplate: '%s | PetSalud',
   title: 'Medicina Prepagada Veterinaria'
 })
@@ -17,6 +15,21 @@ const mostrarHeader = computed(() => {
   return route.name !== "Login" && route.name !== "Admin"
 })
 
+// Generar canonical dinámico
+const canonicalUrl = computed(() => {
+  const baseUrl = 'https://petsalud.com'
+  return `${baseUrl}${route.path}`
+})
+
+// Agregar canonical a head
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: canonicalUrl
+    }
+  ]
+})
 </script>
 
 <template>

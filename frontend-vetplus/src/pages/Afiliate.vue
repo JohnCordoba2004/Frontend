@@ -10,7 +10,7 @@ import StepFinal from '../components/StepFinal.vue';
 
 /* Import components */
 import MedicinaPreventiva from "../components/MedicinaPreventiva.vue"
-import Copyright from "../components/copyright.vue"
+// import Copyright from "../components/copyright.vue"
 import footerInfo from '../components/footerInfo.vue';
 
 // Control del paso actual
@@ -98,6 +98,5 @@ const prevStep = () => {
   <MedicinaPreventiva />
   <!-- FooterInfo -->
   <footerInfo />
-  <!-- Copy -->
-  <Copyright />
+
 </template>

@@ -20,7 +20,7 @@ watch(
     if (store.datosMascota.edad && !opts.includes(store.datosMascota.edad)) patch.edad = '';
     if (nueva === 'Gatos') {
       patch.peso = '';
-      if (['Silver', 'Senior'].includes(store.datosMascota.planSeleccionado)) patch.planSeleccionado = 'Diamante';
+      if (['Premium', 'Elite'].includes(store.datosMascota.planSeleccionado)) patch.planSeleccionado = 'Basico';
     }
     if (Object.keys(patch).length) store.actualizarDatos(patch);
   }

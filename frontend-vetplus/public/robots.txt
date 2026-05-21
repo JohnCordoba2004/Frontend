@@ -1,0 +1,18 @@
+# Allow all pages to be indexed
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# Specific rules for different bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Specify sitemap location
+Sitemap: https://petsalud.com/sitemap.xml
+
+# Crawl delay (in seconds) for respectful crawling
+Crawl-delay: 1

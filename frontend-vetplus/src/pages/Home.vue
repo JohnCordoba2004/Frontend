@@ -4,7 +4,6 @@ import HeroSection from '../components/HeroSection.vue';
 import MedicinaPreventiva from '../components/MedicinaPreventiva.vue';
 import PlanesPrincipales from '../components/PlanesPrincipales.vue';
 import PetSalud from '../components/PetSalud.vue';
-import footerInfo from '../components/footerInfo.vue';
 import Copyright from '../components/copyright.vue';
 import { useHead } from '@unhead/vue';
 useHead({
@@ -30,11 +29,7 @@ useHead({
     <MedicinaPreventiva />
     <!-- Interes -->
     <DeInteres />
-    <!-- footer info -->
-    <footerInfo />
     <!-- Copy -->
     <Copyright />
-
-
   </div>
 </template>

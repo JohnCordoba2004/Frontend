@@ -1,123 +1,137 @@
 <template>
-  <section class="bg-white py-12 lg:py-20">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-slate-50 to-white py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
-        <!-- Columna izquierda - Texto -->
-        <div class="lg:col-span-7">
-          <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-            ¿Por qué PetSalud <span class="font-light text-sky-500">®</span>?
+        <!-- Contenido izquierdo -->
+        <div class="lg:col-span-6">
+          <p class="text-sky-600 text-xs font-semibold tracking-widest uppercase mb-3">¿Por qué elegirnos?</p>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
+            ¿Por qué <span class="text-sky-600">PetSalud</span> <span class="font-light">®</span>?
           </h1>
-
-          <div class="space-y-8 mb-12">
-            <!-- Imagen flotante a la derecha (como la tenías) -->
-            <div class="float-right ml-8 mb-6 w-full max-w-xs lg:max-w-sm">
-              <div class="bg-white p-2 shadow-xl rounded-2xl border border-gray-100">
-                <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1759885003/porq-V_u8cq1u.jpg"
-                  alt="Mascota PetSalud" class="rounded-xl w-full object-cover shadow-inner">
-              </div>
-            </div>
-
-            <!-- Párrafos -->
-            <p v-for="(parrafo, i) in introText" :key="i" class="text-gray-700 leading-relaxed text-base lg:text-lg">
-              {{ parrafo }}
-            </p>
-          </div>
-
-          <!-- Puntos clave -->
-          <div class="space-y-8">
-            <div v-for="(punto, index) in puntosPorQue" :key="index" class="flex items-start gap-4">
-              <span
-                class="shrink-0 w-7 h-7 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center font-bold text-lg mt-1">
-                {{ index + 1 }}
-              </span>
-              <div>
-                <strong class="text-gray-900">{{ punto.titulo }}:</strong>
-                <p class="text-gray-700 mt-1 leading-relaxed">{{ punto.desc }}</p>
-              </div>
-            </div>
-          </div>
+          <p class="text-lg text-slate-600 leading-relaxed mb-8">
+            Una eventualidad médica puede llegar en cualquier momento. PetSalud es sin lugar a dudas la mejor opción en
+            medicina prepagada veterinaria.
+          </p>
+          <a href="/Afiliate"
+            class="inline-flex items-center gap-2 px-6 py-3.5 bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold rounded-2xl transition-all duration-200 shadow-md shadow-sky-200 group">
+            Afíliate ahora
+            <span class="transition-transform duration-200 group-hover:translate-x-1">
+              <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </a>
         </div>
 
-        <!-- Columna derecha - Tarjetas -->
-        <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-8">
-          <!-- Tarjeta Cobertura -->
-          <div class="bg-white rounded-3xl p-7 shadow-sm border border-gray-100 hover:shadow-md transition-all">
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-11 h-11 bg-sky-100 rounded-2xl flex items-center justify-center text-2xl">📍</div>
-              <h3 class="text-xl font-semibold text-gray-900">Cobertura Nacional</h3>
-            </div>
-            <p class="text-gray-600 text-[15px] leading-relaxed mb-6">
-              La red de veterinarias a su servicio. Contamos con los mejores profesionales en todo el país.
-            </p>
-            <a href="/NuestraRed"
-              class="text-sky-600 font-medium hover:text-sky-700 transition-colors flex items-center gap-2">
-              Ver listado completo
-              <span class="text-lg">→</span>
-            </a>
-          </div>
-
-          <!-- Tarjeta Afíliate -->
-          <div class="bg-white rounded-3xl p-7 shadow-sm border border-gray-100 hover:shadow-md transition-all">
-            <div class="flex items-center gap-4 mb-5">
-              <div class="w-11 h-11 bg-emerald-100 rounded-2xl flex items-center justify-center text-2xl">🐾</div>
-              <h3 class="text-xl font-semibold text-gray-900">Afíliate Ahora</h3>
-            </div>
-            <p class="text-gray-600 text-[15px] leading-relaxed mb-6">
-              Descubre la forma más fácil de cuidar a tu mascota con planes diseñados para ti.
-            </p>
-            <a href="/Afiliate"
-              class="text-sky-600 font-medium hover:text-sky-700 transition-colors flex items-center gap-2">
-              Afíliate aquí
-              <span class="text-lg">→</span>
-            </a>
+        <!-- Imagen derecha -->
+        <div class="lg:col-span-6">
+          <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-100 bg-white p-2">
+            <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1779247627/porquePetSalud_b6kcnk.png"
+              alt="¿Por qué PetSalud?"
+              class="w-full h-auto object-cover rounded-2xl transition-transform duration-700 hover:scale-105">
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Razones Section -->
+  <section class="bg-white py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <!-- Encabezado -->
+      <div class="mb-16">
+        <h2 class="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight">
+          Seis razones para <span class="text-sky-600">confiar en nosotros</span>
+        </h2>
+      </div>
+
+      <!-- Grid de razones -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div v-for="(punto, index) in puntosPorQue" :key="index"
+          class="bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 border border-slate-100 hover:border-sky-200 hover:shadow-lg transition-all duration-300 group">
+
+          <!-- Número -->
+          <div
+            class="w-12 h-12 bg-sky-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl mb-5 group-hover:bg-sky-700 transition-colors">
+            {{ String(index + 1).padStart(2, '0') }}
+          </div>
+
+          <!-- Contenido -->
+          <h3 class="text-xl font-bold text-slate-900 mb-3">{{ punto.titulo }}</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">{{ punto.desc }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-r from-sky-600 to-sky-700 py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">¿Listo para cuidar a tu mascota?</h2>
+      <p class="text-sky-100 text-lg mb-8 leading-relaxed">
+        Descubre nuestros planes flexibles y diseñados para tu presupuesto. Tu mascota merece lo mejor.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/Afiliate"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-sky-600 font-semibold rounded-2xl hover:bg-slate-50 transition-all duration-200 shadow-lg group">
+          Explorar planes
+          <span class="transition-transform duration-200 group-hover:translate-x-1">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+        <a href="/NuestraRed"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white hover:bg-opacity-10 transition-all duration-200 group">
+          Ver red de veterinarias
+          <span class="transition-transform duration-200 group-hover:translate-x-1">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
       </div>
     </div>
   </section>
 
   <footerInfo />
-  <Copyright />
+  <!-- <Copyright /> -->
 </template>
 
 <script setup>
+import { useSEO } from '../composables/useSEO';
 import footerInfo from '../components/footerInfo.vue';
 import Copyright from '../components/copyright.vue';
 
-const introText = [
-  'El cuidado médico de nuestras mascotas no debe ser motivo de preocupación.',
-  'Entendemos lo difícil que puede ser enfrentarse a situaciones como: ¿Cuánto me costará este tratamiento de urgencia? o ¿Será necesario practicarle ese costoso procedimiento médico a mi mascota?',
-  'Desafortunadamente, igual que con nosotros, una eventualidad médica puede llegar en cualquier momento para su mascota.',
-  'PetSalud está diseñado para acompañarlo en esos momentos, cubriéndolo de grandes facturas inesperadas y garantizándole un completo servicio médico cuándo su mejor amigo más lo necesita.',
-  'PetSalud es sin lugar a dudas la mejor opción en medicina prepagada veterinaria. Usted se preguntará entonces: ¿Por qué PetSalud?'
-];
+const { setPageSEO } = useSEO();
+
+setPageSEO({
+  title: '¿Por qué PetSalud? | Razones para Elegirnos',
+  description: 'Descubre las 6 razones por las que PetSalud es la mejor medicina prepagada veterinaria en Colombia. Cobertura, flexibilidad, precio y calidad.',
+  keywords: 'por qué PetSalud, medicina prepagada veterinaria, planes para mascotas, PetSalud Colombia',
+  image: 'https://res.cloudinary.com/diro0cqpe/image/upload/v1779247627/porquePetSalud_b6kcnk.png'
+});
 
 const puntosPorQue = [
   {
     titulo: "Por su cubrimiento",
-    desc: "PetSalud cuenta con planes de amplia cobertura en servicios médicos veterinarios, dándole la tranquilidad de que su mascota recibirá la más completa atención en los momentos difíciles."
+    desc: "PetSalud cuenta con planes de amplia cobertura en servicios médicos veterinarios, dándole la tranquilidad de que su mascota recibirá la más completa atención."
   },
   {
     titulo: "Por su flexibilidad",
-    desc: "La amplia gama de planes que ofrecemos se adaptan a sus necesidades y presupuesto. Desde planes básicos de cobertura en medicina preventiva hasta planes con coberturas en cualquier evento de urgencia, con PetSalud usted cuenta con la flexibilidad de escoger su nivel de cobertura preferido."
+    desc: "Amplia gama de planes que se adaptan a sus necesidades y presupuesto. Desde medicina preventiva hasta coberturas en urgencias."
   },
   {
     titulo: "Por su precio",
-    desc: "Afiliándose a PetSalud su mascota tendrá acceso a servicios médicos especializados al alcance de su bolsillo. Con una pequeña cuota mensual, usted tendrá la tranquilidad de estar cubierto ante esas emergencias médicas que podrían costarle una fortuna."
+    desc: "Servicios médicos especializados al alcance de tu bolsillo. Con una pequeña cuota mensual, estarás cubierto ante emergencias."
   },
   {
     titulo: "Por la calidad",
-    desc: "La amplia red de médicos veterinarios ha sido configurada para ofrecerle los mejores servicios médicos disponibles en nuestro país."
+    desc: "Amplia red de médicos veterinarios configurada para ofrecerle los mejores servicios médicos disponibles en el país."
   },
   {
     titulo: "Por sus beneficios",
-    desc: "No tiene que esperar a una emergencia médica para recibir atención y acompañamiento, PetSalud ofrece a todos sus afiliados un gran portafolio de beneficios adicionales."
+    desc: "No solo urgencias. PetSalud ofrece a todos sus afiliados un gran portafolio de beneficios adicionales y servicios especiales."
   },
   {
     titulo: "Por el respaldo",
-    desc: "PetSalud es el resultado del trabajo de profesionales con amplia experiencia en el sector de medicina veterinaria y jóvenes emprendedores con ideas innovadoras."
+    desc: "PetSalud es resultado del trabajo de profesionales con amplia experiencia y jóvenes emprendedores con ideas innovadoras."
   }
 ];
 </script>

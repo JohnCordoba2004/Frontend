@@ -86,12 +86,12 @@
   </section>
 
   <FooterInfo />
-  <Copyright />
+  <!-- <Copyright /> -->
 </template>
 
 <script setup>
 import FooterInfo from '../components/footerInfo.vue';
-import Copyright from '../components/copyright.vue';
+// import Copyright from '../components/copyright.vue';
 
 const comoInicamos = [
   "En el año 2012 un grupo de profesionales ideó la primera versión de PetSalud, en un esfuerzo por renovar la forma en que nuestros perros y gatos recibían tratamientos médicos de urgencia. Fue así como en el año 2013 recibimos a nuestros afiliados pioneros, con el lanzamiento del primer modelo en planes de medicina prepagada: PetSalud Oro y PetSalud Platino.",

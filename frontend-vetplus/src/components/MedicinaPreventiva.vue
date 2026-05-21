@@ -1,94 +1,132 @@
 <template>
-  <section class="bg-white py-16 sm:py-20 lg:py-24">
+  <section class="bg-slate-50 py-20 sm:py-28">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
-      <!-- Título de sección -->
-      <div class="text-center mb-12">
-        <div
-          class="inline-flex items-center gap-3 bg-sky-100 text-sky-700 px-6 py-2 rounded-full text-sm font-medium mb-4">
+      <!-- Encabezado -->
+      <div class="text-center mb-16">
+        <span
+          class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 border border-emerald-200 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-5">
           <i class="fa-solid fa-kit-medical"></i>
-          MEDICINA PREVENTIVA
-        </div>
-        <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
-          Planes de Medicina Preventiva
+          Medicina Preventiva
+        </span>
+        <h2 class="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight">
+          Planes de <span class="text-emerald-600">Medicina Preventiva</span>
         </h2>
-        <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+        <p class="mt-4 text-base sm:text-lg text-slate-500 max-w-xl mx-auto leading-relaxed">
           Completa tu plan médico con cobertura preventiva para mantener a tu mascota sana todo el año.
         </p>
       </div>
 
-      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <!-- Grid principal -->
+      <div class="grid lg:grid-cols-12 gap-8 items-start">
 
-        <!-- Columna izquierda - Descripción -->
-        <div class="lg:col-span-5">
-          <div class="bg-gray-50 rounded-3xl p-8 lg:p-10 h-full">
-            <img src="https://img.icons8.com/3d-fluency/94/veterinarian.png"
-              alt="PetSalud Preventivo" class="w-20 h-20 mb-6">
-            <h3 class="text-2xl font-semibold text-gray-900 mb-4">
-              ¿Qué incluye el Plan Preventivo?
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-              Agrega a tu plan médico una cobertura preventiva completa con chequeos regulares,
-              vacunaciones, asistencia telefónica y más servicios para cuidar la salud de tu mascota.
-            </p>
+        <!-- Columna izquierda: descripción -->
+        <div class="lg:col-span-4">
+          <div class="bg-white rounded-3xl border border-slate-100 shadow-sm p-8 lg:p-10 flex flex-col gap-6 h-full">
+            <img src="https://img.icons8.com/3d-fluency/94/veterinarian.png" alt="Medicina Preventiva Veterinaria"
+              class="w-16 h-16" />
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">
+                ¿Qué incluye el Plan Preventivo?
+              </h3>
+              <p class="text-slate-500 text-sm leading-relaxed">
+                Agrega a tu plan médico cobertura preventiva completa: chequeos regulares,
+                vacunaciones, asistencia telefónica y más servicios para el bienestar de tu mascota.
+              </p>
+            </div>
+
+            <!-- Indicadores rápidos -->
+            <div class="flex flex-col gap-3 mt-2">
+              <div class="flex items-center gap-3">
+                <span
+                  class="flex items-center justify-center w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 text-sm shrink-0">
+                  <i class="fa-solid fa-shield-heart"></i>
+                </span>
+                <span class="text-sm text-slate-600 font-medium">Cobertura todo el año</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span
+                  class="flex items-center justify-center w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 text-sm shrink-0">
+                  <i class="fa-solid fa-phone"></i>
+                </span>
+                <span class="text-sm text-slate-600 font-medium">Asistencia telefónica 24/7</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span
+                  class="flex items-center justify-center w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 text-sm shrink-0">
+                  <i class="fa-solid fa-syringe"></i>
+                </span>
+                <span class="text-sm text-slate-600 font-medium">Vacunación y desparasitación</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Columna derecha - Comparativa -->
-        <div class="lg:col-span-7">
-          <!-- Desktop Table -->
-          <div class="hidden lg:block bg-white rounded-3xl shadow overflow-hidden">
-            <table class="w-full">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th class="p-6 text-left font-semibold text-gray-900">Servicio</th>
-                  <th class="p-6 text-center font-semibold text-emerald-600">PREMIUM</th>
-                  <th class="p-6 text-center font-semibold text-gray-600">BÁSICO</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y">
-                <tr v-for="(item, i) in servicios" :key="i" class="hover:bg-gray-50">
-                  <td class="p-6 font-medium text-gray-700">{{ item.nombre }}</td>
-                  <td class="p-6 text-center text-2xl text-emerald-500">✔</td>
-                  <td class="p-6 text-center">
-                    <span v-if="item.basico" class="text-2xl text-emerald-500">✔</span>
-                    <span v-else class="text-3xl text-gray-300">–</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <!-- Columna derecha: tabla comparativa -->
+        <div class="lg:col-span-8 flex flex-col gap-4">
 
-          <!-- Mobile Cards -->
-          <div class="lg:hidden space-y-6">
-            <!-- Premium -->
-            <div class="bg-white rounded-3xl shadow p-6">
-              <h3 class="font-bold text-xl text-emerald-600 mb-6">PLAN PREMIUM</h3>
-              <ul class="space-y-4">
-                <li v-for="(item, i) in servicios" :key="i" class="flex items-center gap-3">
-                  <span class="text-emerald-500 text-xl">✔</span>
-                  <span class="text-gray-700">{{ item.nombre }}</span>
-                </li>
-              </ul>
+          <!-- Cabecera de planes (desktop) -->
+          <div class="hidden lg:grid grid-cols-12 gap-0 px-6">
+            <div class="col-span-6"></div>
+            <!-- Premium header -->
+            <div class="col-span-3 flex flex-col items-center gap-1">
+              <span class="text-xs font-bold tracking-widest text-emerald-600 uppercase">Premium</span>
+              <span class="text-xs text-slate-400">Todo incluido</span>
             </div>
-
-            <!-- Básico -->
-            <div class="bg-white rounded-3xl shadow p-6">
-              <h3 class="font-bold text-xl text-gray-600 mb-6">PLAN BÁSICO</h3>
-              <ul class="space-y-4">
-                <li v-for="(item, i) in servicios" :key="i" class="flex items-center gap-3"
-                  :class="{ 'opacity-40': !item.basico }">
-                  <span class="text-emerald-500 text-xl" v-if="item.basico">✔</span>
-                  <span class="text-gray-400 text-2xl" v-else>–</span>
-                  <span class="text-gray-700">{{ item.nombre }}</span>
-                </li>
-              </ul>
+            <!-- Básico header -->
+            <div class="col-span-3 flex flex-col items-center gap-1">
+              <span class="text-xs font-bold tracking-widest text-slate-500 uppercase">Básico</span>
+              <span class="text-xs text-slate-400">Esencial</span>
             </div>
           </div>
 
-          <p class="text-xs text-gray-500 text-center mt-6 italic">
+          <!-- Filas de servicios -->
+          <div class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
+            <div v-for="(item, i) in servicios" :key="i" :class="[
+              'grid grid-cols-12 items-center px-6 py-4 transition-colors duration-150 hover:bg-slate-50',
+              i !== servicios.length - 1 ? 'border-b border-slate-100' : ''
+            ]">
+              <!-- Nombre del servicio -->
+              <div class="col-span-6 flex items-center gap-3">
+                <span class="text-base shrink-0">{{ item.icono }}</span>
+                <span class="text-sm font-medium text-slate-700">{{ item.nombre }}</span>
+              </div>
+
+              <!-- Premium: siempre sí -->
+              <div class="col-span-3 flex justify-center">
+                <span
+                  class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">
+                  ✓
+                </span>
+              </div>
+
+              <!-- Básico: condicional -->
+              <div class="col-span-3 flex justify-center">
+                <span v-if="item.basico"
+                  class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">✓</span>
+                <span v-else
+                  class="flex items-center justify-center w-7 h-7 rounded-full bg-slate-100 text-slate-300 text-base leading-none font-light">–</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Leyenda cabecera mobile -->
+          <div class="lg:hidden flex justify-end gap-6 px-2 -mt-1">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span class="text-xs text-slate-500 font-medium">Premium</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+              <span class="text-xs text-slate-500 font-medium">Básico</span>
+            </div>
+          </div>
+
+          <!-- Nota al pie -->
+          <p class="text-xs text-slate-400 text-center italic px-2">
             * Todos los servicios están sujetos al plan médico seleccionado
           </p>
+
         </div>
       </div>
     </div>
@@ -96,21 +134,13 @@
 </template>
 
 <script setup>
-defineProps({
-  containerClass: {
-    type: String,
-    default: ''
-  }
-})
-
-// Lista centralizada de servicios (más fácil de mantener)
 const servicios = [
-  { nombre: 'Valoraciones Preventivas', basico: true },
-  { nombre: 'Vacunación', basico: true },
-  { nombre: 'Desparasitación', basico: true },
-  { nombre: 'Asistencia Telefónica 24/7', basico: true },
-  { nombre: 'Esterilización', basico: false },
-  { nombre: 'Auxilio Funerario', basico: false },
-  { nombre: 'Odontología Preventiva', basico: false }
+  { nombre: 'Valoraciones Preventivas', icono: '🩺', basico: true },
+  { nombre: 'Vacunación', icono: '💉', basico: true },
+  { nombre: 'Desparasitación', icono: '🐛', basico: true },
+  { nombre: 'Asistencia Telefónica 24/7', icono: '📞', basico: true },
+  { nombre: 'Esterilización', icono: '✂️', basico: false },
+  { nombre: 'Auxilio Funerario', icono: '🕊️', basico: false },
+  { nombre: 'Odontología Preventiva', icono: '🦷', basico: false },
 ]
 </script>

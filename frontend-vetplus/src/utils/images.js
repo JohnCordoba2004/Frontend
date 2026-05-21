@@ -1,14 +1,14 @@
 export const imagenes = {
   SENIOR: {
-    img: 'https://res.cloudinary.com/diro0cqpe/image/upload/v1774484779/f6fe8100-9594-4039-a2b3-5eb137080281.png'
+    img: "https://res.cloudinary.com/diro0cqpe/image/upload/v1778823081/337c6d3c-6e06-4cb9-bc38-4d492f7c9b3b_qrzm2c.png",
   },
   DIAMANTE: {
-    'img': 'https://res.cloudinary.com/diro0cqpe/image/upload/v1774414150/85576887-685c-4b43-9d54-a835ab509afc.png'
+    img: "https://res.cloudinary.com/diro0cqpe/image/upload/v1778822721/c3ed7cce-23cf-4d10-b247-baceca427481_ggkw1e.png",
   },
   ESMERALDA: {
-    'img': 'https://res.cloudinary.com/diro0cqpe/image/upload/v1774414291/PLAN_ESMERALDA_dleipg.png'
+    img: "https://res.cloudinary.com/diro0cqpe/image/upload/v1778822484/86ee782d-0c7b-4b18-9216-d6e74cd6e861_smvmu8.png",
   },
   SILVER: {
-    'img': "https://res.cloudinary.com/diro0cqpe/image/upload/v1774414334/78cfeb85-8f0a-4fa6-b4d6-be04475e23ad.png"
-  }
-}
+    img: "https://res.cloudinary.com/diro0cqpe/image/upload/v1778823534/c546b58a-ebd4-437b-a89f-6e5e7654b1b2_asg4rx.png",
+  },
+};

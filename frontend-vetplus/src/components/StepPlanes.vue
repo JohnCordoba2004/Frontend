@@ -1,10 +1,9 @@
 <script setup>
 import { computed, reactive } from 'vue';
 import { useMascotaStore } from '../stores/mascotasStore';
-import { tablaPrecios } from '../utils/preciosVets';
-import { imagenes } from '../utils/images';
-import { descPlan } from '../utils/descPlan';
-import { colorPaws } from '../utils/colorPaws';
+import { tablaPrecios } from '../utils/priceVet';
+import { images } from '../utils/imagenes';
+import { descripcionPlan } from '../utils/descripcionPlan';
 
 
 const store = useMascotaStore();
@@ -12,44 +11,60 @@ const emit = defineEmits(['next', 'prev']);
 
 //Mapeos
 const mapsImage = {
-  SENIOR: imagenes.SENIOR.img,
-  DIAMANTE: imagenes.DIAMANTE.img,
-  ESMERALDA: imagenes.ESMERALDA.img,
-  SILVER: imagenes.SILVER.img,
+  BASICO: images.BASICO.img,
+  AVANZADO: images.AVANZADO.img,
+  PREMIUM: images.PREMIUM.img,
+  ELITE: images.ELITE.img,
 }
 
 const mapsDescPlans = {
-  SENIOR: descPlan.SENIOR.desc,
-  DIAMANTE: descPlan.DIAMANTE.desc,
-  ESMERALDA: descPlan.ESMERALDA.desc,
-  SILVER: descPlan.SILVER.desc,
+  BASICO: descripcionPlan.BASICO.desc,
+  AVANZADO: descripcionPlan.AVANZADO.desc,
+  PREMIUM: descripcionPlan.PREMIUM.desc,
+  ELITE: descripcionPlan.ELITE.desc,
 }
 
 const mapsColorPaws = {
-  SENIOR: colorPaws.SENIOR.color,
-  DIAMANTE: colorPaws.DIAMANTE.color,
-  ESMERALDA: colorPaws.ESMERALDA.color,
-  SILVER: colorPaws.SILVER.color,
+  BASICO: 'text-emerald-600',
+  AVANZADO: 'text-sky-600',
+  PREMIUM: 'text-violet-600',
+  ELITE: 'text-amber-600',
 }
+
+const ordenPlanes = ['Basico', 'Avanzado', 'Premium', 'Elite']
+
+const ordenarPlanes = (planes) =>
+  Object.fromEntries(
+    ordenPlanes
+      .filter(plan => planes?.[plan])
+      .map(plan => [plan, planes[plan]])
+  )
+
+const ordenarPlanesGato = (planes) =>
+  Object.fromEntries(
+    ['Basico', 'Avanzado']
+      .filter(plan => planes?.[plan])
+      .map(plan => [plan, planes[plan]])
+  )
 
 /* Cobertura Planes */
 const seleccionPlanes = reactive({
-  Diamante: {
+  Basico: {
     tipo: 'premium',
     cobertura: '70%'
   },
 
-  Esmeralda: {
+  Avanzado: {
     tipo: 'premium',
     cobertura: '70%'
   },
 
-  Senior: {
+  Premium: {
     tipo: 'premium',
     cobertura: '70%'
   },
 
-  Silver: {
+  Elite: {
     tipo: 'premium',
     cobertura: '70%'
   }
@@ -66,21 +81,27 @@ const obtenerPlanes = computed(() => {
 
   if (especie === 'Perros' && edad === '9 o más años') {
     const pesoKey = esDeRaza ? 'Grande' : normalizarPeso(peso)
-    const senior = tablaPrecios.Senior?.Perros?.[pesoKey]
-    return senior ? { Senior: senior } : {}
+    const elite = tablaPrecios.Elite?.Perros?.[pesoKey]
+    return elite ? { Elite: elite } : {}
   }
 
-  if (especie === 'Perros') return esDeRaza
-    ? (tablaPrecios.Perros?.ConRaza?.[edad] || {})
-    : (tablaPrecios.Perros?.SinRaza?.[normalizarPeso(peso)]?.[edad] || {})
+  if (especie === 'Perros') {
+    const planes = esDeRaza
+      ? (tablaPrecios.Perros?.ConRaza?.[edad] || {})
+      : (tablaPrecios.Perros?.SinRaza?.[normalizarPeso(peso)]?.[edad] || {})
+
+    return ordenarPlanes(planes)
+  }
 
   if (especie === 'Gatos') {
     const keyRaza = esDeRaza ? 'ConRaza' : 'SinRaza';
-    return tablaPrecios.Gatos?.[keyRaza]?.[edad] || {}
+    return ordenarPlanesGato(tablaPrecios.Gatos?.[keyRaza]?.[edad] || {})
   }
 
   return {}
 })
+
+const cantidadPlanes = computed(() => Object.keys(obtenerPlanes.value).length)
 
 
 const formatPrice = (detalles, plan) => {
@@ -133,8 +154,20 @@ const handleRegresar = () => emit('prev')
 
 const obtenerBeneficiosPorPlan = (plan) => {
   const beneficios = {
-    'SENIOR': ['Servicios médicos ilimitados por accidentes', 'Consultas ilimitadas', 'Atención a nivel nacional'],
-    'DIAMANTE': [
+    'BASICO': [
+      'Servicios médicos por enfermedad en eventos seleccionados',
+      'Servicios médicos por accidentes',
+      'Consulta general',
+      'Atención a nivel nacional',
+      'Medicina preventiva'
+    ],
+    'AVANZADO': [
+      'Servicios médicos ilimitados por enfermedad',
+      'Servicios médicos ilimitados por accidente',
+      'Atención a nivel nacional',
+      'Atención en veterinarias aliadas del país'
+    ],
+    'PREMIUM': [
       'Servicios médicos ilimitados por enfermedad',
       'Servicios médicos ilimitados por accidente',
       'Atención a nivel nacional',
@@ -145,19 +178,11 @@ const obtenerBeneficiosPorPlan = (plan) => {
       'Cirugía displasia de cadera',
       'Cirugía ligamentos, tendondes y rótula'
     ],
-    'ESMERALDA': [
-      'Servicios médicos ilimitados por enfermedad',
-      'Servicios médicos ilimitados por accidente',
+    'ELITE': [
+      'Servicios médicos por accidentes',
+      'Consultas ilimitadas',
       'Atención a nivel nacional',
-      'Atención en cualquier veterinaria o médico en todo el país'
-    ],
-    'SILVER': [
-      'Servicios médicos por enfermedad, 2 eventos al año hasta $400.000/evento',
-      'Servicios médicos por accidentes 2 eventos al año hasta $2.000.000/evento',
-      'Consulta General 4/año',
-      'Atención a nivel nacional',
-      'Atención en cualquier veterinaria o médico en todo el país',
-      'Medicina preventiva'
+      'Coberturas especiales para mascotas mayores'
     ]
   }
   return beneficios[plan.toUpperCase()] || []
@@ -182,41 +207,46 @@ const itemsPreventiva = [
       Selecciona tu Plan Médico
     </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    <div class="mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8" :class="cantidadPlanes <= 2
+      ? 'max-w-5xl'
+      : 'max-w-7xl xl:grid-cols-3'">
 
-      <div v-for="(detalles, plan) in obtenerPlanes" :key="plan"
-        class="bg-white border border-gray-200 rounded-4xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+      <div v-for="(detalles, plan, index) in obtenerPlanes" :key="plan"
+        class="group flex min-h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_24px_55px_rgba(15,23,42,0.12)]">
 
 
-        <div class="p-4 sm:p-6 border-b flex items-center gap-2 sm:gap-4">
+        <div class="flex items-start justify-between gap-4 px-5 pb-3 pt-5 sm:px-6 sm:pt-6">
 
           <div :class="mapsColorPaws[plan.toUpperCase()]"
-            class="w-8 h-8 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center text-2xl font-black shrink-0">
-            1
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-50 text-base font-black ring-1 ring-slate-100 sm:h-12 sm:w-12 sm:text-lg">
+            {{ index + 1 }}
           </div>
 
-          <h3 :class="mapsColorPaws[plan.toUpperCase()]" class="font-black text-xl sm:text-2xl leading-tight uppercase">
-            Plan Médico
-            <br>
-            <span class="text-2xl sm:text-4xl">{{ plan }}</span>
-          </h3>
+          <div class="min-w-0 flex-1 text-right">
+            <p class="text-xs font-black uppercase tracking-[0.18em] text-slate-400">Plan medico</p>
+            <h3 :class="mapsColorPaws[plan.toUpperCase()]"
+              class="mt-1 break-words text-3xl font-black uppercase leading-none sm:text-4xl">
+              {{ plan }}
+            </h3>
+          </div>
         </div>
 
         <!-- Imagen -->
-        <div class="flex items-center justify-center h-[180px] py-6 bg-white mb-2 shadow-md">
-          <img :src="mapsImage[plan.toUpperCase()]" :alt="plan" class="object-cover">
+        <div class="mx-5 flex h-56 items-end justify-center overflow-hidden rounded-lg bg-slate-50 ring-1 ring-slate-100 sm:mx-6 sm:h-64">
+          <img :src="mapsImage[plan.toUpperCase()]" :alt="plan"
+            class="h-full w-full object-contain object-bottom px-3 pt-4 transition-transform duration-300 group-hover:scale-[1.03]">
         </div>
 
         <!-- Descripción -->
-        <div class="px-4 sm:px-6 text-center text-gray-800 mb-6 min-h-[70px] ">
+        <div class="px-5 pt-5 text-center text-sm leading-relaxed text-slate-600 sm:px-6 sm:text-base">
           {{ mapsDescPlans[plan.toUpperCase()] }}
         </div>
 
         <!-- Beneficios -->
-        <ul class="px-4 sm:px-6 space-y-4 text-sm mt-6 min-h-[420px] lg:min-h-[420px]">
+        <ul class="px-5 space-y-3 text-sm mt-6 sm:px-6 md:min-h-[240px] lg:min-h-[380px]">
           <li v-for="(beneficio, i) in obtenerBeneficiosPorPlan(plan)" :key="i"
-            class="flex items-start gap-2 text-gray-600">
-            <span :class="mapsColorPaws[plan.toUpperCase()]" class="mt-auto text-balance">
+            class="flex items-start gap-3 text-slate-600">
+            <span :class="mapsColorPaws[plan.toUpperCase()]" class="mt-0.5 shrink-0">
               <i class="fa-solid fa-paw fa-sm"></i>
             </span>
             <span class="leading-snug">{{ beneficio }}</span>
@@ -224,23 +254,30 @@ const itemsPreventiva = [
         </ul>
 
         <!-- Cobertura Preventiva -->
-        <div class="mt-8 bg-gray-100 p-4 sm:p-6 border-t">
+        <div class="mt-8 border-t border-slate-100 bg-slate-50 p-4 sm:min-h-[475px] sm:p-6">
           <p class="uppercase text-sm font-bold mb-4" :class="mapsColorPaws[plan.toUpperCase()]">
             Cobertura Medicina Preventiva
           </p>
 
-          <table class="w-full text-xs border-spacing-x-1 sm:border-spacing-x-0">
+          <table class="w-full table-fixed text-xs border-spacing-x-1 sm:border-spacing-x-0">
+            <colgroup>
+              <col class="w-[58%]">
+              <col class="w-[21%]">
+              <col class="w-[21%]">
+            </colgroup>
             <thead>
               <tr class="border-b">
-                <th class="text-left py-2 font-bold text-lg" :class="mapsColorPaws[plan.toUpperCase()]">Servicio</th>
+                <th class="text-left py-2 pr-3 font-bold text-base sm:text-lg" :class="mapsColorPaws[plan.toUpperCase()]">
+                  Servicio
+                </th>
 
-                <th class="text-center py-2 px-1 sm:px-0 text-[10px] sm:text-lg"
-                  :class="mapsColorPaws[plan.toUpperCase()]" v-if="plan.toUpperCase() !== 'SILVER'">
+                <th class="text-center py-2 px-1 text-xs sm:px-0 sm:text-base"
+                  :class="mapsColorPaws[plan.toUpperCase()]">
                   Premium
                 </th>
 
-                <th class="text-center py-2 px-1 sm:px-0 text-[10px] sm:text-lg"
-                  :class="mapsColorPaws[plan.toUpperCase()]" v-if="plan.toUpperCase() !== 'SILVER'">
+                <th class="text-center py-2 px-1 text-xs sm:px-0 sm:text-base"
+                  :class="mapsColorPaws[plan.toUpperCase()]">
                   Basico
                 </th>
 
@@ -249,24 +286,22 @@ const itemsPreventiva = [
 
             <tbody class="divide-y text-gray-800">
               <tr v-for="item in itemsPreventiva" :key="item"
-                :class="{ 'opacity-0 select-none pointer-events-none': item === 'Odontología preventiva' && plan.toUpperCase() === 'SILVER' }">
+                :class="{ 'opacity-0 select-none pointer-events-none': item === 'Odontología preventiva' && plan.toUpperCase() === 'BASICO' }">
 
-                <td class="py-4 pr-6">{{ item }}</td>
+                <td class="py-4 pr-3 leading-snug">{{ item }}</td>
                 <!--Si no es silver-->
                 <!--Full premium, todos check-->
                 <td class="text-center">
-                  <span v-if="plan.toUpperCase() !== 'SILVER'" class="text-lg"
-                    :class="mapsColorPaws[plan.toUpperCase()]">
+                  <span class="text-lg" :class="mapsColorPaws[plan.toUpperCase()]">
                     <i class="fa-solid fa-check"></i>
                   </span>
-                  <span v-else></span>
                 </td>
 
                 <!--Basico-->
                 <td class="text-center text-lg opacity-60" :class="mapsColorPaws[plan.toUpperCase()]">
                   <!--Plan basico silver-->
                   <span
-                    v-if="plan.toUpperCase() === 'SILVER' && ['Valoraciones preventivas', 'Vacunación', 'Desparasitación', 'Asistencia telefónica 24/7', 'Esterilización', 'Servicio funerario'].includes(item)">
+                    v-if="plan.toUpperCase() === 'BASICO' && ['Valoraciones preventivas', 'Vacunación', 'Desparasitación', 'Asistencia telefónica 24/7', 'Esterilización', 'Servicio funerario'].includes(item)">
                     <i class="fa-solid fa-check"></i>
                   </span>
                   <!--Plan basico con condicion normal para los otros planes-->
@@ -284,32 +319,34 @@ const itemsPreventiva = [
         </div>
 
         <!--Precio y seleccionar-->
-        <div class="mt-auto p-4 sm:p-8 bg-sky-50">
+        <div class="mt-auto border-t border-slate-100 bg-white p-4 sm:p-6">
 
           <!-- TIPO -->
-          <div class="flex justify-center gap-6 mb-6 text-sm font-bold text-sky-800" :class="[
-            plan.toUpperCase() === 'SILVER' || plan.toUpperCase() === 'SENIOR'
-              ? 'invisible'
-              : 'visible'
-          ]">
+          <div class="mb-4 grid grid-cols-2 gap-2 rounded-lg bg-slate-100 p-1 text-sm font-bold text-slate-700">
 
-            <label class="flex items-center gap-2 cursor-pointer">
-              <input type="radio" value="premium" v-model="seleccionPlanes[plan].tipo" class="accent-sky-500">
+            <label
+              class="flex cursor-pointer items-center justify-center gap-2 rounded-md px-3 py-2 transition"
+              :class="seleccionPlanes[plan].tipo === 'premium' ? 'bg-white text-sky-700 shadow-sm' : 'hover:bg-white/70'">
+              <input type="radio" value="premium" v-model="seleccionPlanes[plan].tipo" class="sr-only">
               Premium
             </label>
 
-            <label class="flex items-center gap-2 cursor-pointer">
-              <input type="radio" value="basico" v-model="seleccionPlanes[plan].tipo" class="accent-sky-500">
+            <label
+              class="flex cursor-pointer items-center justify-center gap-2 rounded-md px-3 py-2 transition"
+              :class="seleccionPlanes[plan].tipo === 'basico' ? 'bg-white text-sky-700 shadow-sm' : 'hover:bg-white/70'">
+              <input type="radio" value="basico" v-model="seleccionPlanes[plan].tipo" class="sr-only">
               Basico
             </label>
 
           </div>
 
           <!-- COBERTURA -->
-          <div class="flex justify-center gap-4 mb-6 text-sm font-bold text-sky-800">
+          <div class="mb-5 grid grid-cols-3 gap-2 text-sm font-bold text-slate-700">
 
-            <label v-for="p in ['70%', '80%', '90%']" :key="p" class="flex items-center gap-2 cursor-pointer">
-              <input type="radio" :value="p" v-model="seleccionPlanes[plan].cobertura" class="accent-sky-500">
+            <label v-for="p in ['70%', '80%', '90%']" :key="p"
+              class="flex cursor-pointer items-center justify-center rounded-lg border px-3 py-2 transition"
+              :class="seleccionPlanes[plan].cobertura === p ? 'border-sky-300 bg-sky-50 text-sky-700' : 'border-slate-200 bg-white hover:border-sky-200'">
+              <input type="radio" :value="p" v-model="seleccionPlanes[plan].cobertura" class="sr-only">
               {{ p }}
             </label>
 
@@ -318,7 +355,7 @@ const itemsPreventiva = [
           <!-- PRECIO DINAMICO -->
           <div class="text-center mb-6">
 
-            <span class="text-2xl sm:text-4xl font-black text-sky-600 tracking-tighter">
+            <span class="text-3xl sm:text-4xl font-black text-sky-600 tracking-tighter">
               ${{ formatPrice(detalles, plan) }}
             </span>
 
@@ -331,7 +368,7 @@ const itemsPreventiva = [
           <button @click.prevent="handleSeleccion(plan)" :class="store.datosMascota.planSeleccionado === plan
             ? 'bg-sky-600 text-white shadow'
             : 'bg-white border-2 border-sky-400 text-sky-400 hover:bg-sky-50'"
-            class="w-full py-4 rounded-2xl font-bold text-base transition-all active:scale-95 hover:scale-[1.02] hover:bg-sky-500 hover:text-white ">
+            class="w-full rounded-lg py-4 font-bold text-base transition-all active:scale-95 hover:scale-[1.01] hover:bg-sky-500 hover:text-white ">
             {{ store.datosMascota.planSeleccionado === plan
               ? 'Seleccionado'
               : 'Seleccionar' }}
