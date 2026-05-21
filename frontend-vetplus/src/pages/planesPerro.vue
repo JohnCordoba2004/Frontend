@@ -64,7 +64,7 @@
               class="absolute inset-0 bg-linear-to-br from-sky-100 to-emerald-50 rounded-full blur-3xl scale-110 opacity-70">
             </div>
 
-            <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1761360294/planes-para-perros_r6zggu.png"
+            <img src="https://res.cloudinary.com/diro0cqpe/image/upload/v1779344341/planPerro_tvup1c.png"
               alt="Planes para Perros - PetSalud Colombia"
               class="relative w-full h-auto object-contain drop-shadow-2xl" />
 
