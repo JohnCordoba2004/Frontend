@@ -50,13 +50,13 @@
                   {{ tab.description }}
                 </p>
 
-                <router :to="tab.link"
+                <RouterLink :to="tab.link"
                   class="inline-flex items-center gap-2 self-start px-5 py-3 bg-sky-600 hover:bg-sky-800 active:scale-95 text-white text-sm font-semibold rounded-2xl transition-all duration-200 shadow-sm shadow-sky-200 group">
                   {{ tab.cta }}
                   <span class="transition-transform duration-200 group-hover:translate-x-1">
                     <i class="fa-solid fa-arrow-right"></i>
                   </span>
-                </router>
+                </RouterLink>
               </div>
             </div>
           </div>
