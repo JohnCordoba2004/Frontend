@@ -65,60 +65,42 @@
         <!-- Columna derecha: tabla comparativa -->
         <div class="lg:col-span-8 flex flex-col gap-4">
 
-          <!-- Cabecera de planes (desktop) -->
-          <div class="hidden lg:grid grid-cols-12 gap-0 px-6">
-            <div class="col-span-6"></div>
-            <!-- Premium header -->
-            <div class="col-span-3 flex flex-col items-center gap-1">
-              <span class="text-xs font-bold tracking-widest text-emerald-600 uppercase">Premium</span>
-              <span class="text-xs text-slate-400">Todo incluido</span>
-            </div>
-            <!-- Básico header -->
-            <div class="col-span-3 flex flex-col items-center gap-1">
-              <span class="text-xs font-bold tracking-widest text-slate-500 uppercase">Básico</span>
-              <span class="text-xs text-slate-400">Esencial</span>
-            </div>
-          </div>
-
           <!-- Filas de servicios -->
           <div class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
+            <div class="grid grid-cols-12 gap-0 items-center px-6 py-4 bg-gradient-to-r from-slate-50 to-slate-100 border-b border-slate-200 font-bold text-sm">
+              <div class="col-span-6 text-slate-700">Servicio</div>
+              <div class="col-span-3 text-center text-emerald-600">Premium</div>
+              <div class="col-span-3 text-center text-slate-500">Básico</div>
+            </div>
+
             <div v-for="(item, i) in servicios" :key="i" :class="[
-              'grid grid-cols-12 items-center px-6 py-4 transition-colors duration-150 hover:bg-slate-50',
+              'grid grid-cols-12 items-center px-6 py-5 transition-colors duration-150 hover:bg-slate-50',
               i !== servicios.length - 1 ? 'border-b border-slate-100' : ''
             ]">
               <!-- Nombre del servicio -->
               <div class="col-span-6 flex items-center gap-3">
-                <span class="text-base shrink-0">{{ item.icono }}</span>
-                <span class="text-sm font-medium text-slate-700">{{ item.nombre }}</span>
+                <span class="text-xl shrink-0">{{ item.icono }}</span>
+                <span class="text-sm font-medium text-slate-700 leading-snug">{{ item.nombre }}</span>
               </div>
 
               <!-- Premium: siempre sí -->
               <div class="col-span-3 flex justify-center">
-                <span
-                  class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">
-                  <i class="fa-solid fa-arrow-right"></i>
+                <span class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 font-bold text-sm">
+                  <i class="fa-solid fa-check text-xs"></i>
                 </span>
               </div>
 
               <!-- Básico: condicional -->
               <div class="col-span-3 flex justify-center">
                 <span v-if="item.basico"
-                  class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">✓</span>
+                  class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 font-bold text-sm">
+                  <i class="fa-solid fa-check text-xs"></i>
+                </span>
                 <span v-else
-                  class="flex items-center justify-center w-7 h-7 rounded-full bg-slate-100 text-slate-300 text-base leading-none font-light">–</span>
+                  class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-300 text-lg font-light">
+                  —
+                </span>
               </div>
-            </div>
-          </div>
-
-          <!-- Leyenda cabecera mobile -->
-          <div class="lg:hidden flex justify-end gap-6 px-2 -mt-1">
-            <div class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-              <span class="text-xs text-slate-500 font-medium">Premium</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
-              <span class="text-xs text-slate-500 font-medium">Básico</span>
             </div>
           </div>
 
