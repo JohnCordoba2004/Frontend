@@ -122,7 +122,7 @@ useHead({
     { name: 'description', content: 'PetSalud Medicina Prepagada ofrece planes con excelentes coberturas, servicios, clínicas veterinarias y beneficios adicionales adaptados a las necesidades de tu perro.' },
     { property: 'og:title', content: 'PetSalud | Planes para Perros' },
     { property: 'og:description', content: 'Planes de medicina prepagada veterinaria adaptados a tu perro. Cobertura preventiva, urgencias y enfermedades crónicas.' },
-    { property: 'og:image', content: 'https://res.cloudinary.com/diro0cqpe/image/upload/v1761360294/planes-para-perros_r6zggu.png' },
+    { property: 'og:image', content: 'https://res.cloudinary.com/diro0cqpe/image/upload/v1779344341/planPerro_tvup1c.png' },
     { property: 'og:type', content: 'website' },
   ],
 })
